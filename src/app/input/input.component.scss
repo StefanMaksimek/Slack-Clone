@@ -1,0 +1,13 @@
+@import "../../assets/variable.scss";
+.holder {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+p {
+  width: 300px;
+  height: 100px;
+  border-radius: $brd-radius;
+  background-color: $secondary-tr;
+}
