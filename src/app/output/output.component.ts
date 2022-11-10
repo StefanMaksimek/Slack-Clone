@@ -7,6 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OutputComponent implements OnInit {
 
+  user = {
+    "userProfilePic": "",
+    "userName": "",
+    "userMessage": ""
+  }
+
   constructor() { }
 
   ngOnInit(): void {
