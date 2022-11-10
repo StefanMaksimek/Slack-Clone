@@ -5,4 +5,12 @@ import { Component } from '@angular/core';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent {}
+export class AppComponent {
+  user: any[] = [
+    {
+      ID: '4fd56fd4b5df56',
+      name: 'Stefan Maksimek',
+      img: 'suit_men.png',
+    },
+  ];
+}
