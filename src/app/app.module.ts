@@ -22,6 +22,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { ThreadComponent } from './thread/thread.component';
+import { ChannelComponent } from './channel/channel.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { ThreadComponent } from './thread/thread.component';
     InputComponent,
     OutputComponent,
     ThreadComponent,
+    ChannelComponent,
   ],
   imports: [
     BrowserModule,
