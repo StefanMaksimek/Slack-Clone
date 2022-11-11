@@ -1,9 +1,20 @@
 @import "../../assets/variable.scss";
 
 .holder {
-  border: 1px solid $white;
+  border: 1px solid $grey;
   border-radius: $brd-radius;
   padding: $spacing-XS;
+  &:focus-within {
+    border: 1px solid $white;
+    form {
+      .icon-holder {
+        mat-icon,
+        p {
+          color: $white;
+        }
+      }
+    }
+  }
 
   form {
     width: 100%;
@@ -11,31 +22,67 @@
     .icon-holder {
       display: flex;
       align-items: center;
-      mat-icon,
-      .vr,
-      p {
-        font-size: 24px;
+
+      .add {
+        background-color: $grey-tr;
+      }
+      .white {
+        color: $white;
         margin: $spacing-XS;
       }
+      mat-icon,
+      .vr,
       p {
         display: flex;
         justify-content: center;
         align-items: center;
-        margin-right: $spacing-S;
+        font-size: $icon-size-M;
+        margin: $spacing-XS;
+        color: $grey;
+        height: $icon-size-M;
+        width: $icon-size-M;
+        img {
+          height: $icon-size-M;
+          width: $icon-size-M;
+          object-fit: cover;
+        }
+      }
+
+      mat-icon,
+      p {
+        border-radius: 50%;
+        padding: $spacing-XS;
+        cursor: pointer;
+        &:hover {
+          background-color: $grey;
+        }
+      }
+
+      p {
+        margin: 0;
+        &:first-child {
+          margin-left: $spacing-XS;
+        }
         i {
           margin-right: 3px;
         }
       }
+
       .vr {
-        background-color: $white;
+        background-color: $grey;
         height: $spacing-M;
         width: 1px;
+      }
+
+      mat-icon {
+        width: unset;
+        height: unset;
       }
     }
 
     input {
       border: none;
-      margin: 0;
+      margin: $spacing-XS 0;
       background-color: transparent;
       width: 100%;
       padding: $spacing-XS;
@@ -43,6 +90,11 @@
         outline: none;
         color: $white;
       }
+    }
+
+    .space-between {
+      display: flex;
+      justify-content: space-between;
     }
   }
 }

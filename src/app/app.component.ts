@@ -11,6 +11,7 @@ export class AppComponent {
       ID: '4fd56fd4b5df56',
       name: 'Stefan Maksimek',
       img: 'suit_men.png',
+      timeStamp: 5161515165,
     },
   ];
 }
