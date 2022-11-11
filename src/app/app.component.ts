@@ -12,6 +12,7 @@ export class AppComponent {
       name: 'Stefan Maksimek',
       img: 'suit_men.png',
       timeStamp: 5161515165,
+      color: 'red',
     },
   ];
 }
