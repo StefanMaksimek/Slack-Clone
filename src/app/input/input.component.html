@@ -1,22 +1,22 @@
-<div class="holder">
-  <form class="example-form">
-    <div class="icon-holder">
+<div class="holder" #holder>
+  <form class="form" (click)="focusOn()" #form>
+    <div class="icon-holder" *ngIf="formatting">
       <p
-        matTooltip="Info about the action"
+        matTooltip="bold type"
         matTooltipPosition="above"
         matTooltipShowDelay="250"
       >
         B
       </p>
       <p
-        matTooltip="Info about the action"
+        matTooltip="italic type"
         matTooltipPosition="above"
         matTooltipShowDelay="250"
       >
         <i>I</i>
       </p>
       <p
-        matTooltip="Info about the action"
+        matTooltip="crossed out "
         matTooltipPosition="above"
         matTooltipShowDelay="250"
       >
@@ -24,55 +24,57 @@
       </p>
       <div class="vr"></div>
       <mat-icon
-        matTooltip="Info about the action"
+        matTooltip="link"
         matTooltipPosition="above"
         matTooltipShowDelay="250"
-        >attach_file</mat-icon
+        >add_link</mat-icon
       >
       <div
-        matTooltip="Info about the action"
+        matTooltip=""
         matTooltipPosition="above"
         matTooltipShowDelay="250"
         class="vr"
       ></div>
       <mat-icon
-        matTooltip="Info about the action"
+        matTooltip="numbered list"
         matTooltipPosition="above"
         matTooltipShowDelay="250"
         >format_list_numbered</mat-icon
       >
       <mat-icon
-        matTooltip="Info about the action"
+        matTooltip="bullet list"
         matTooltipPosition="above"
         matTooltipShowDelay="250"
         >format_list_bulleted</mat-icon
       >
       <div class="vr"></div>
       <mat-icon
-        matTooltip="Info about the action"
+        matTooltip="block quote"
         matTooltipPosition="above"
         matTooltipShowDelay="250"
         >align_horizontal_left</mat-icon
       >
       <div class="vr"></div>
       <mat-icon
-        matTooltip="Info about the action"
+        matTooltip="code"
         matTooltipPosition="above"
         matTooltipShowDelay="250"
         >code</mat-icon
       >
       <mat-icon
-        matTooltip="Info about the action"
+        matTooltip="code block"
         matTooltipPosition="above"
         matTooltipShowDelay="250"
         >check_box_outline_blank</mat-icon
       >
     </div>
-    <input placeholder="Nachricht an <Side-Topping>" />
+
+    <input #input placeholder="Nachricht an <Side-Topping>" />
+
     <div class="icon-holder space-between">
       <div class="icon-holder">
         <mat-icon
-          matTooltip="Info about the action"
+          matTooltip=" "
           matTooltipPosition="above"
           matTooltipShowDelay="250"
           class="white add"
@@ -80,14 +82,14 @@
         >
         <div class="vr white"></div>
         <mat-icon
-          matTooltip="Info about the action"
+          matTooltip=" "
           matTooltipPosition="above"
           matTooltipShowDelay="250"
           class="white"
           >video_camera_front</mat-icon
         >
         <mat-icon
-          matTooltip="Info about the action"
+          matTooltip=" "
           matTooltipPosition="above"
           matTooltipShowDelay="250"
           class="white"
@@ -95,40 +97,59 @@
         >
         <div class="vr white"></div>
         <mat-icon
-          matTooltip="Info about the action"
+          matTooltip=" "
           matTooltipPosition="above"
           matTooltipShowDelay="250"
           class="white"
           >tag_faces</mat-icon
         >
         <p
-          matTooltip="Info about the action"
+          matTooltip=" "
           matTooltipPosition="above"
           matTooltipShowDelay="250"
           class="white"
         >
           @
         </p>
-        <p
-          matTooltip="Info about the action"
-          matTooltipPosition="above"
-          matTooltipShowDelay="250"
-          class="white"
-        >
-          <u>Aa</u>
-        </p>
+
+        <ng-container *ngIf="formatting; then isTrue; else isFalse">
+        </ng-container>
+        <ng-template #isTrue>
+          <p
+            (click)="toggleFormatting()"
+            matTooltip=" "
+            matTooltipPosition="above"
+            matTooltipShowDelay="250"
+            class="white"
+          >
+            <u>Aa</u>
+          </p>
+        </ng-template>
+        <ng-template #isFalse>
+          <p
+            (click)="toggleFormatting()"
+            matTooltip=" "
+            matTooltipPosition="above"
+            matTooltipShowDelay="250"
+            class="white"
+          >
+            Aa
+          </p>
+        </ng-template>
       </div>
 
       <div class="icon-holder">
         <mat-icon
-          matTooltip="Info about the action"
+          [ngStyle]="{ color: 'red' }"
+          [ngStyle]="{ color: focusing ? 'red' : 'blue' }"
+          matTooltip=" "
           matTooltipPosition="above"
           matTooltipShowDelay="250"
           >send</mat-icon
         >
-        <div class="vr white"></div>
+        <div class="vr"></div>
         <mat-icon
-          matTooltip="Info about the action"
+          matTooltip=" "
           matTooltipPosition="above"
           matTooltipShowDelay="250"
           >keyboard_arrow_down</mat-icon
