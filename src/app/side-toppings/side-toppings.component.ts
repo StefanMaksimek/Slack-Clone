@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-side-toppings',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SideToppingsComponent implements OnInit {
 
-  constructor() { }
+  topics = ['Favoriten', 'Channel', 'Direktnachrichten', 'Apps']
+  topicComponents = ['channel',]
+
+  constructor(private _router: Router) { }
 
   ngOnInit(): void {
+  }
+
+  openTopic(i: any) {
+   this._router.navigateByUrl('/channel')
   }
 
 }

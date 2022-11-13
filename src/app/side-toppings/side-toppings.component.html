@@ -1,5 +1,3 @@
-<p>side-toppings works!</p>
-<p>Favoriten</p>
-<p>channels</p>
-<p>Direktnachrichten</p>
-<p>apps</p>
+<div *ngFor="let topic of topics; let i = index;">
+    <p (click)="openTopic(i)">{{ topics[i] }}</p>
+</div>
