@@ -4,6 +4,7 @@
   border: 1px solid $grey;
   border-radius: $brd-radius;
   padding: $spacing-XS;
+  background-color: $black;
   &:focus-within {
     border: 1px solid $white;
     form {
@@ -20,6 +21,7 @@
     width: 100%;
     overflow: hidden;
     cursor: text;
+
     .icon-holder {
       display: flex;
       align-items: center;
