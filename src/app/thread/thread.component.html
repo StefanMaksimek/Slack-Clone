@@ -1,14 +1,40 @@
-<div class="message-box">
-  <img src="../../assets/img/suit_men.png" alt="" />
-  <div class="message">
-    <div class="message-header">
-      <h3>User-Name</h3>
-      <span>TimeStamp</span>
+<div class="thread-box">
+  <div class="message-box">
+    <img src="../../assets/img/suit_men.png" alt="" />
+
+    <div class="message">
+      <div class="message-header">
+        <h3>User-Name</h3>
+        <span>Gestern um 21:18 Uhr</span>
+      </div>
+      <p>
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Velit sequi
+        tempora quaerat? Numquam enim, provident natus illum eligendi blanditiis
+        ratione?
+      </p>
     </div>
-    <p>
-      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Velit sequi
-      tempora quaerat? Numquam enim, provident natus illum eligendi blanditiis
-      ratione?
-    </p>
+  </div>
+
+  <div class="hr">
+    <span *ngIf="thread.messagses">
+      {{ thread.messagses.length }} Antworten</span
+    >
+    <hr />
+  </div>
+
+  <div class="messages" *ngFor="let message of thread.messagses">
+    <div class="message-box">
+      <img src="../../assets/img/suit_men.png" alt="" />
+
+      <div class="message">
+        <div class="message-header">
+          <h3>User-Name</h3>
+          <span>{{ message.timeStamp }}</span>
+        </div>
+        <p>
+          {{ message.message }}
+        </p>
+      </div>
+    </div>
   </div>
 </div>
