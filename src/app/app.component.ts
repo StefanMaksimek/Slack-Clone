@@ -13,6 +13,38 @@ export class AppComponent {
       img: 'suit_men.png',
       timeStamp: 5161515165,
       color: 'red',
+      threads: [
+        {
+          ID: 'hjkf564h65g4h4r',
+          messages: [
+            {
+              timeStamp: 654544644,
+              message:
+                'Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid odit dignissimos repellendus.',
+            },
+            {
+              timeStamp: 654544644,
+              message:
+                'Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid odit dignissimos repellendus.',
+            },
+            {
+              timeStamp: 654544644,
+              message:
+                'Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid odit dignissimos repellendus.',
+            },
+            {
+              timeStamp: 654544644,
+              message:
+                'Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid odit dignissimos repellendus.',
+            },
+            {
+              timeStamp: 654544644,
+              message:
+                'Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid odit dignissimos repellendus.',
+            },
+          ],
+        },
+      ],
     },
   ];
 }

@@ -23,6 +23,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { ThreadComponent } from './thread/thread.component';
 import { ChannelComponent } from './channel/channel.component';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import { ChannelComponent } from './channel/channel.component';
     MatInputModule,
     MatSelectModule,
     MatIconModule,
+    MatButtonModule,
     MatTooltipModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideDatabase(() => getDatabase()),
