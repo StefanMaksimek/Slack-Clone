@@ -6,25 +6,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./output.component.scss'],
 })
 export class OutputComponent implements OnInit {
-  user = [
-    {
-      userProfilePic: '',
-      userName: '',
-      userMessage: [
-        { text: 'jklfdbnjkndfjkvbnfdj', timeStap: 6545545566 },
-        { text: 'dfvbdf', timeStap: 65455454566 },
-        { text: '', timeStap: 6545547566 },
-        { text: '', timeStap: 6545544566 },
-      ],
-    },
-    {
-      userProfilePic: '',
-      userName: '',
-      userMessage: '',
-    },
-  ];
+ 
+  userNames = ['Max Mustermann', 'Arnold Weber', 'Kevin Wagner'];
+  profilePic = ['assets/img/profile.png','assets/img/profile.png','assets/img/profile.png'];
+  timeStamp = ['32763642','52843893','132453623'];
+  userMassage = ['Hallo wie gehst ?','Lorem Ipsum','Lorem Ipsum dolor'];
 
-  constructor() {}
+  constructor() { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 }

@@ -1,15 +1,17 @@
-<div class="user">
-    <img class="profile-pic" src="assets/img/profile.png">
+<div class="user" *ngFor="let x of userNames; let i = index;">
+    <img class="profile-pic" src='{{ profilePic[i] }}'>
     <div>
-        <h3>Max Mustermann</h3>
-        <span>hallo wie gehts ?</span>
-    </div>
-</div>
-
-<div class="user">
-    <img class="profile-pic" src="assets/img/profile.png">
-    <div>
-        <h3>Max Mustermann</h3>
-        <span>hallo wie gehts ?</span>
+        <div class="hover-react">
+            <div class="hover-effect">
+                <img class="react-icons" src="assets/img/icons/laugh-emote.ico">
+                <span>React</span>
+            </div>
+            <div class="hover-effect">
+                <img class="react-icons" src="assets/img/icons/chat.ico">
+                <span>Reply</span>
+            </div>
+        </div>
+        <h3 class="user-name">{{ userNames[i] }}</h3>
+        <span>{{ userMassage[i] }}</span>
     </div>
 </div>
