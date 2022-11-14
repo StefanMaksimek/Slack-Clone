@@ -12,6 +12,7 @@
     width: $spacing-L;
     object-fit: cover;
     margin-right: $spacing-S;
+    border-radius: $brd-radius;
   }
   .message {
     display: flex;
@@ -41,4 +42,11 @@
     border-top: 1px solid $white-tr;
     clear: both;
   }
+}
+
+app-input {
+  position: absolute;
+  left: $spacing-S;
+  right: $spacing-S;
+  bottom: $spacing-M;
 }

@@ -18,7 +18,7 @@ export class ThreadComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    //this.getThread();
+    this.getThread();
   }
 
   getThread() {
