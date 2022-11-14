@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { collectionData, docData, Firestore } from '@angular/fire/firestore';
+import { docData, Firestore } from '@angular/fire/firestore';
 import { collection, doc } from 'firebase/firestore';
 import { Thread } from 'src/assets/models/thread.class';
 
@@ -9,31 +9,23 @@ import { Thread } from 'src/assets/models/thread.class';
   styleUrls: ['./thread.component.scss'],
 })
 export class ThreadComponent implements OnInit {
-  threads: any;
+  threadRef: any;
   thread: any = new Thread();
   path: string = 'KlrT25uPqcdzk69nzk8G';
 
-  constructor(private firestore: Firestore) {}
+  constructor(private firestore: Firestore) {
+    this.threadRef = collection(this.firestore, 'threads');
+  }
 
   ngOnInit(): void {
-    this.getUser();
+    //this.getThread();
   }
 
-  getThreads() {
-    collectionData(collection(this.firestore, 'threads')).subscribe(
-      (threads) => {
-        this.threads = threads;
-        console.log('threads', this.threads);
-      }
-    );
-  }
-
-  getUser() {
-    const userRef = collection(this.firestore, 'threads');
-    docData(doc(userRef, this.path)).subscribe((thread: any) => {
+  getThread() {
+    docData(doc(this.threadRef, this.path)).subscribe((thread: any) => {
       console.log(thread);
 
-      this.thread = thread;
+      this.thread = thread.thread;
     });
   }
 }

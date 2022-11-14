@@ -16,13 +16,11 @@
   </div>
 
   <div class="hr">
-    <span *ngIf="thread.messagses">
-      {{ thread.messagses.length }} Antworten</span
-    >
+    <span *ngIf="thread.messages"> {{ thread.messages.length }} Antworten</span>
     <hr />
   </div>
 
-  <div class="messages" *ngFor="let message of thread.messagses">
+  <div class="messages" *ngFor="let message of thread.messages">
     <div class="message-box">
       <img src="../../assets/img/suit_men.png" alt="" />
 
