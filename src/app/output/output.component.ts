@@ -17,7 +17,6 @@ export class OutputComponent implements OnInit {
   timeStamp = ['32763642', '52843893', '132453623'];
   userMassage = ['Hallo wie gehst ?', 'Lorem Ipsum', 'Lorem Ipsum dolor'];
 
-  messageRef;
   path: string = 'hrfjkhgbvf4f65g4fg4';
   messages: any = [
     //Vorschlag zur Änderung
@@ -60,21 +59,15 @@ export class OutputComponent implements OnInit {
     },
   ];
 
-  constructor(private firestore: Firestore) {
-    this.messageRef = collection(this.firestore, 'messages');
-  }
+  constructor(private firestore: Firestore) {}
 
   ngOnInit(): void {
-    //this.getThread();
+    // this.getThread('messages');
   }
 
-  getThread() {
-    docData(doc(this.messageRef, this.path)).subscribe((message: any) => {
-      console.log('messages', this.messages);
-      this.messages = message.messages;
-
-      console.log('messages', this.messages);
-
+  getThread(coll: string) {
+    let messageRef = collection(this.firestore, coll);
+    docData(doc(messageRef, this.path)).subscribe((message: any) => {
       this.messages = message.messages;
     });
   }

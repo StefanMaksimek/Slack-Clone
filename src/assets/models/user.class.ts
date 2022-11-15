@@ -15,20 +15,20 @@ export class User {
   profilePic: any;
 
   constructor(obj?: any) {
-    this.firstName = obj ? obj.firstName : '';
-    this.lastName = obj ? obj.lastName : '';
-    this.gender = obj ? obj.gender : '';
-    this.birthdate = obj ? obj.birthdate : '';
-    this.email = obj ? obj.email : '';
-    this.phone = obj ? obj.phone : '';
-    this.street = obj ? obj.street : '';
-    this.zipCode = obj ? obj.zipCode : '';
-    this.city = obj ? obj.city : '';
-    this.userID = obj ? obj.userID : '';
-    this.hobby = obj ? obj.hobby : '';
-    this.employment = obj ? obj.employment : '';
-    this.favColor = obj ? obj.favColor : '';
-    this.profilePic = obj ? obj.profilePic : '';
+    this.firstName = obj ? obj.firstName : 'firstName';
+    this.lastName = obj ? obj.lastName : 'lastName';
+    this.gender = obj ? obj.gender : 'gender';
+    this.birthdate = obj ? obj.birthdate : 'birthdate';
+    this.email = obj ? obj.email : 'email';
+    this.phone = obj ? obj.phone : 'phone';
+    this.street = obj ? obj.street : 'street';
+    this.zipCode = obj ? obj.zipCode : 'zipCode';
+    this.city = obj ? obj.city : 'city';
+    this.userID = obj ? obj.userID : 'userID';
+    this.hobby = obj ? obj.hobby : 'hobby';
+    this.employment = obj ? obj.employment : 'employment';
+    this.favColor = obj ? obj.favColor : 'favColor';
+    this.profilePic = obj ? obj.profilePic : 'profilePic';
   }
 
   toJson() {

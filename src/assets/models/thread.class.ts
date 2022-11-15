@@ -1,5 +1,4 @@
 export class Thread {
-  ID: any = 'KlrT25uPqcdzk69nzk8G';
   messages: any = [
     {
       timeStamp: 654544644,
@@ -28,13 +27,10 @@ export class Thread {
     },
   ];
 
-  constructor(obj?: any) {
-    this.ID = this.createID(20);
-  }
+  constructor(obj?: any) {}
 
   toJson() {
     return {
-      ID: this.ID,
       messages: this.messages,
     };
   }
