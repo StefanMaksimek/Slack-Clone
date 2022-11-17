@@ -14,6 +14,7 @@ import {
 export class FormComponent implements OnInit {
   @Input()
   title: string = '';
+  type: string = '';
 
   constructor() {}
 

@@ -36,6 +36,10 @@ export class SignUpComponent implements OnInit {
     });
   }
 
+  switchToSignIn() {
+    this.router.navigate(['signin']);
+  }
+
   //Check singUp in auth.service
   signUp___() {
     //  this.auth.signUp(this.form.value).subscribe({

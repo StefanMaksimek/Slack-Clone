@@ -34,6 +34,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { RouterModule } from '@angular/router';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { HttpClientModule } from '@angular/common/http';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
   declarations: [
@@ -51,6 +52,7 @@ import { HttpClientModule } from '@angular/common/http';
     ChannelComponent,
   ],
   imports: [
+    MatCardModule,
     FormsModule,
     ReactiveFormsModule,
     BrowserModule,

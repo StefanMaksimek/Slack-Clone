@@ -34,10 +34,4 @@ export class ThreadComponent implements OnInit {
       this.thread = thread.thread;
     });
   }
-
-  signOut() {
-    this.auth.signOut().subscribe({
-      next: () => this.router.navigate(['signin']),
-    });
-  }
 }

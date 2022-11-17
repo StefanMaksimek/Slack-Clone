@@ -1,3 +1,4 @@
+@import "../../../assets/variable.scss";
 :host {
   max-width: 550px;
   display: block;
@@ -6,7 +7,6 @@
 
 .auth-area {
   padding: 23px;
-  background: white;
   border-radius: 10px;
 }
 

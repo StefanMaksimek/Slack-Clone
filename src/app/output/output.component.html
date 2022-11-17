@@ -1,21 +1,62 @@
-<div class="user" *ngFor="let message of messages let i = index" id="user-container{{i}}" (mouseover)="onMouseover(i)" (mouseout)="onMouseout(i)">
-  <img class="profile-pic" src="assets/img/{{ message.profilePic }}" />
-
-  <div>
-    <h3 class="user-name">{{ message.userName }}</h3>
-    <span>{{ message.message }}</span>
-  </div>
-
-  <div id="hover-container{{i}}" class="hover-react">
-    <div class="hover-effect">
-      <img class="react-icons" src="assets/img/icons/laugh-emote.ico" />
-      <span (click)="openDialog()">React</span>
+<mat-drawer-container class="example-container">
+  <mat-drawer mode="side" opened>
+    <div class="sidebarHeader">
+      <mat-toolbar>
+        <span>Slack-Clone</span>
+      </mat-toolbar>
     </div>
-
-    <div class="hover-effect">
-      <img class="react-icons" src="assets/img/icons/chat.ico" />
-      <span (click)="openDialog()">Reply</span>
+    <div class="sidebar">
+      <app-sidebar></app-sidebar>
+      <div class="sidebar-active">Active-Sidebar-Topping</div>
     </div>
-  </div>
-</div>
-<div id="dialog"></div>
+  </mat-drawer>
+
+  <mat-drawer-content>
+    <mat-toolbar>
+      <span>OUTPUT-HEADDER</span>
+    </mat-toolbar>
+
+    <div
+      class="user"
+      *ngFor="let message of messages; let i = index"
+      id="user-container{{ i }}"
+      (mouseover)="onMouseover(i)"
+      (mouseout)="onMouseout(i)"
+    >
+      <img class="profile-pic" src="assets/img/{{ message.profilePic }}" />
+
+      <div>
+        <h3 class="user-name">{{ message.userName }}</h3>
+        <span>{{ message.message }}</span>
+      </div>
+
+      <div id="hover-container{{ i }}" class="hover-react">
+        <div class="hover-effect">
+          <img class="react-icons" src="assets/img/icons/laugh-emote.ico" />
+          <span (click)="openDialog()">React</span>
+        </div>
+
+        <div class="hover-effect">
+          <img class="react-icons" src="assets/img/icons/chat.ico" />
+          <span (click)="openDialog()">Reply</span>
+        </div>
+      </div>
+    </div>
+    <div id="dialog"></div>
+
+    <app-input class="input" #input></app-input>
+  </mat-drawer-content>
+
+  <mat-drawer mode="side" opened position="end">
+    <mat-toolbar class="thread-header">
+      <div>
+        <h2>Thread</h2>
+        <span># 'Side-topping'</span>
+      </div>
+      <button mat-icon-button>
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-toolbar>
+    <app-thread></app-thread>
+  </mat-drawer>
+</mat-drawer-container>

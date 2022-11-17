@@ -31,4 +31,8 @@ export class SignInComponent implements OnInit {
       error: (error) => this.snackbar.open(error.message),
     });
   }
+
+  switchToSignUp() {
+    this.router.navigate(['signup']);
+  }
 }

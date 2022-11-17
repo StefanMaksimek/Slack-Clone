@@ -6,5 +6,12 @@
   <div class="headerSecondSection">
     <mat-icon fontIcon="help" matTooltip="Help"></mat-icon>
     <img src="assets/img/profile.png" matTooltip="Profil" />
+    <button
+      *ngIf="auth.isLoggedIn$ | async as user"
+      mat-button
+      (click)="signOut()"
+    >
+      Sign Out
+    </button>
   </div>
 </mat-toolbar>
