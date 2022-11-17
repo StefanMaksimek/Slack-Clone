@@ -52,23 +52,23 @@ export class OutputComponent implements OnInit {
     },
   ];
 
-  constructor(private firestore: Firestore) { }
+  constructor(private firestore: Firestore) {}
 
-  onMouseover(i:any): void {
-    let id:any = 'hover-container' + i;
-    let box:any = document.getElementById(id);
+  onMouseover(i: any): void {
+    let id: any = 'hover-container' + i;
+    let box: any = document.getElementById(id);
     box.style.display = 'flex';
   }
-  
-  onMouseout(i:any): void {
-    let id:any = 'hover-container' + i;
-    let box:any = document.getElementById(id);
+
+  onMouseout(i: any): void {
+    let id: any = 'hover-container' + i;
+    let box: any = document.getElementById(id);
     box.style.display = 'none';
   }
 
   openDialog() {
-    let id:any = 'dialog';
-    let dialogContainer:any = document.getElementById(id);
+    let id: any = 'dialog';
+    let dialogContainer: any = document.getElementById(id);
     dialogContainer.style.display = 'flex';
     dialogContainer.innerHTML = 'Diese Function wurde noch nicht Implementiert';
 
@@ -78,7 +78,7 @@ export class OutputComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // this.getThread('messages');
+    //this.getThread('messages');
   }
 
   getThread(coll: string) {
@@ -87,5 +87,4 @@ export class OutputComponent implements OnInit {
       this.messages = message.messages;
     });
   }
-
 }

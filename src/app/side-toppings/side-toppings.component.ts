@@ -4,26 +4,25 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-side-toppings',
   templateUrl: './side-toppings.component.html',
-  styleUrls: ['./side-toppings.component.scss']
+  styleUrls: ['./side-toppings.component.scss'],
 })
 export class SideToppingsComponent implements OnInit {
-
-  topics = ['Channels', 'Direktnachrichten', 'Apps']
-  channels = ['# Angular ','# JavaScript ','# Bewerbung ']
-  directMessages = ['Stefan', 'Robert', 'Baris']
-  apps = ['Slack-Clone Team']
+  topics = ['Channels', 'Direktnachrichten', 'Apps'];
+  channels = ['# Angular ', '# JavaScript ', '# Bewerbung '];
+  directMessages = ['Stefan', 'Robert', 'Baris'];
+  apps = ['Slack-Clone Team'];
 
   channelsActive = false;
   directmessagesActive = false;
   appsActive = false;
 
-  constructor(private _router: Router) { }
+  constructor(private _router: Router) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   showChannels() {
-    this.channelsActive = true;
+    this.channelsActive = !this.channelsActive;
+    //this.channelsActive = true;
   }
 
   closeChannels() {
@@ -39,5 +38,4 @@ export class SideToppingsComponent implements OnInit {
   showApps() {
     this.appsActive = true;
   }
-
 }
