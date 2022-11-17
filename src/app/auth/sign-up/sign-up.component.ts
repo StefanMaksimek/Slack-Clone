@@ -30,8 +30,14 @@ export class SignUpComponent implements OnInit {
     });
   }
 
-  //Check singUp in auth.service
   signUp() {
+    this.auth.signUp(this.form.value).subscribe({
+      next: () => this.router.navigate(['output']),
+    });
+  }
+
+  //Check singUp in auth.service
+  signUp___() {
     //  this.auth.signUp(this.form.value).subscribe({
     //    next: () => this.router.navigate(['chat']),
     //    error: (error) => this.snackbar.open(error.message),

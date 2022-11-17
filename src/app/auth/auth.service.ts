@@ -39,6 +39,16 @@ export class AuthService {
   }
 
   signUp({ email, password, displayName }: SignupCredentials) {
+    return from(
+      createUserWithEmailAndPassword(this.auth, email, password)
+    ).pipe(switchMap(({ user }) => updateProfile(user, { displayName })));
+  }
+
+  signOut() {
+    return from(this.auth.signOut());
+  }
+
+  signUp___({ email, password, displayName }: SignupCredentials) {
     // return from(
     //   createUserWithEmailAndPassword(this.auth, email, password)
     // ).pipe(
@@ -54,7 +64,7 @@ export class AuthService {
   }
 
   //Check apiUrl
-  signOut() {
+  signOut___() {
     //  const user = this.auth.currentUser;
     //  return from(this.auth.signOut()).pipe(
     //    switchMap(() =>

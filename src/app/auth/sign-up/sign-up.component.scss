@@ -1,7 +1,14 @@
+@import "../../../assets/variable.scss";
+
 .form-field {
   width: 100%;
 }
 
 .goto-link {
   margin-left: 15px;
+}
+
+.app,
+mat-form-field {
+  color: black;
 }

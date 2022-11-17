@@ -4,7 +4,13 @@
 
     <div class="message">
       <div class="message-header">
-        <h3>User-Name</h3>
+        <ng-container
+          *ngIf="auth.isLoggedIn$ | async as user; else authButtons"
+        >
+          <span>User {{ user?.displayName }} is logged in</span>
+          <button mat-button (click)="signOut()">Sign Out</button>
+        </ng-container>
+        <h3>User</h3>
         <span>Gestern um 21:18 Uhr</span>
       </div>
       <p>
@@ -38,3 +44,8 @@
 </div>
 
 <app-input class="input"></app-input>
+
+<ng-template #authButtons>
+  <a routerLink="/signin" routerLinkActive="active" mat-button>Signin</a>
+  <a routerLink="/signup" routerLinkActive="active" mat-button>Signup</a>
+</ng-template>

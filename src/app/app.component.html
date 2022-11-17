@@ -1,5 +1,3 @@
-<router-outlet></router-outlet>
-
 <app-header></app-header>
 
 <mat-drawer-container class="example-container">
@@ -17,7 +15,7 @@
     <mat-toolbar>
       <span>OUTPUT-HEADDER</span>
     </mat-toolbar>
-    <app-output></app-output>
+    <router-outlet></router-outlet>
     <app-input class="input" #input></app-input>
   </mat-drawer-content>
 

@@ -27,7 +27,7 @@ export class SignInComponent implements OnInit {
 
   signIn() {
     this.auth.signIn(this.form.value).subscribe({
-      next: () => this.router.navigate(['chat']),
+      next: () => this.router.navigate(['output']),
       error: (error) => this.snackbar.open(error.message),
     });
   }

@@ -8,21 +8,23 @@ import {
   canActivate,
   redirectUnauthorizedTo,
 } from '@angular/fire/auth-guard';
+import { OutputComponent } from './output/output.component';
 
 const routes: Routes = [
   { path: 'channel', component: ChannelComponent },
+  { path: 'output', component: OutputComponent },
 
   //for sign-in
   { path: '', redirectTo: 'chat', pathMatch: 'full' },
   {
     path: 'signin',
     component: SignInComponent,
-    ...canActivate(() => redirectLoggedInTo(['chat'])),
+    ...canActivate(() => redirectLoggedInTo(['channel'])),
   },
   {
     path: 'signup',
     component: SignUpComponent,
-    ...canActivate(() => redirectLoggedInTo(['chat'])),
+    ...canActivate(() => redirectLoggedInTo(['channel'])),
   },
   //only to check how to implement the redirect
   //{ path: 'chat',
