@@ -25,6 +25,7 @@ import { ThreadComponent } from './thread/thread.component';
 import { ChannelComponent } from './channel/channel.component';
 import { MatButtonModule } from '@angular/material/button';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { provideAuth,getAuth } from '@angular/fire/auth';
 
 @NgModule({
   declarations: [
@@ -55,6 +56,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideDatabase(() => getDatabase()),
     provideFirestore(() => getFirestore()),
+    provideAuth(() => getAuth()),
   ],
   providers: [],
   bootstrap: [AppComponent],
