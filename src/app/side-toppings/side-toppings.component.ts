@@ -8,16 +8,36 @@ import { Router } from '@angular/router';
 })
 export class SideToppingsComponent implements OnInit {
 
-  topics = ['Favoriten', 'Channel', 'Direktnachrichten', 'Apps']
-  topicComponents = ['channel',]
+  topics = ['Channels', 'Direktnachrichten', 'Apps']
+  channels = ['# Angular ','# JavaScript ','# Bewerbung ']
+  directMessages = ['Stefan', 'Robert', 'Baris']
+  apps = ['Slack-Clone Team']
+
+  channelsActive = false;
+  directmessagesActive = false;
+  appsActive = false;
 
   constructor(private _router: Router) { }
 
   ngOnInit(): void {
   }
 
-  openTopic(i: any) {
-   this._router.navigateByUrl('/channel')
+  showChannels() {
+    this.channelsActive = true;
+  }
+
+  closeChannels() {
+    if (this.channelsActive) {
+      this.channelsActive = false;
+    }
+  }
+
+  showDirectMessages() {
+    this.directmessagesActive = true;
+  }
+
+  showApps() {
+    this.appsActive = true;
   }
 
 }
