@@ -25,10 +25,21 @@ import { ThreadComponent } from './thread/thread.component';
 import { ChannelComponent } from './channel/channel.component';
 import { MatButtonModule } from '@angular/material/button';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { provideAuth,getAuth } from '@angular/fire/auth';
+import { provideAuth, getAuth } from '@angular/fire/auth';
+import { SignInComponent } from './auth/sign-in/sign-in.component';
+import { SignUpComponent } from './auth/sign-up/sign-up.component';
+import { FormComponent } from './auth/form/form.component';
+import { CommonModule } from '@angular/common';
+import { MatDividerModule } from '@angular/material/divider';
+import { RouterModule } from '@angular/router';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
+    SignInComponent,
+    SignUpComponent,
+    FormComponent,
     AppComponent,
     HeaderComponent,
     SidebarComponent,
@@ -57,6 +68,11 @@ import { provideAuth,getAuth } from '@angular/fire/auth';
     provideDatabase(() => getDatabase()),
     provideFirestore(() => getFirestore()),
     provideAuth(() => getAuth()),
+    CommonModule,
+    MatDividerModule,
+    RouterModule,
+    MatSnackBarModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
