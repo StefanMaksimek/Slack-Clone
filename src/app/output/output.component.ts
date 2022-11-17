@@ -8,18 +8,11 @@ import { collection, doc } from 'firebase/firestore';
   styleUrls: ['./output.component.scss'],
 })
 export class OutputComponent implements OnInit {
-  userNames = ['Max Mustermann', 'Arnold Weber', 'Kevin Wagner'];
-  profilePic = [
-    'assets/img/profile.png',
-    'assets/img/profile.png',
-    'assets/img/profile.png',
-  ];
-  timeStamp = ['32763642', '52843893', '132453623'];
-  userMassage = ['Hallo wie gehst ?', 'Lorem Ipsum', 'Lorem Ipsum dolor'];
+  index = '';
+  hoverReact = false;
 
   path: string = 'hrfjkhgbvf4f65g4fg4';
   messages: any = [
-    //Vorschlag zur Änderung
     {
       userName: 'Max Mustermann',
       profilePic: 'profile.png',
@@ -59,7 +52,30 @@ export class OutputComponent implements OnInit {
     },
   ];
 
-  constructor(private firestore: Firestore) {}
+  constructor(private firestore: Firestore) { }
+
+  onMouseover(i:any): void {
+    let id:any = 'hover-container' + i;
+    let box:any = document.getElementById(id);
+    box.style.display = 'flex';
+  }
+  
+  onMouseout(i:any): void {
+    let id:any = 'hover-container' + i;
+    let box:any = document.getElementById(id);
+    box.style.display = 'none';
+  }
+
+  openDialog() {
+    let id:any = 'dialog';
+    let dialogContainer:any = document.getElementById(id);
+    dialogContainer.style.display = 'flex';
+    dialogContainer.innerHTML = 'Diese Function wurde noch nicht Implementiert';
+
+    setTimeout(() => {
+      dialogContainer.style.display = 'none';
+    }, 1200);
+  }
 
   ngOnInit(): void {
     // this.getThread('messages');
@@ -71,4 +87,5 @@ export class OutputComponent implements OnInit {
       this.messages = message.messages;
     });
   }
+
 }

@@ -1,3 +1,36 @@
-<div *ngFor="let topic of topics; let i = index;">
-    <p (click)="openTopic(i)">{{ topics[i] }}</p>
+<div class="sidebarMenu">
+    <div class="sidebarMenuChild">
+        <div>
+            <div class="sidebarIcon" (click)="showChannels()">
+                <mat-icon fontIcon="arrow_right"></mat-icon> Channels
+            </div>
+            <div *ngIf="channelsActive" class="channels">
+                <div class="sidebarIcon " *ngFor="let channel of channels; let i = index;">
+                   <b> {{ channels[i] }} </b>
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <div class="sidebarIcon" (click)="showDirectMessages()">
+                <mat-icon fontIcon="arrow_right"></mat-icon> Direktnachrichten
+            </div>
+            <div *ngIf="directmessagesActive" class="channels">
+                <div class="sidebarIcon " *ngFor="let directMessage of directMessages; let i = index;">
+                   <b> {{ directMessages[i] }} </b>
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <div class="sidebarIcon" (click)="showApps()">
+                <mat-icon fontIcon="arrow_right"></mat-icon> Apps
+            </div>
+            <div *ngIf="appsActive" class="channels">
+                <div class="sidebarIcon " *ngFor="let app of apps; let i = index;">
+                   <b> {{ apps[i] }} </b>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
