@@ -25,17 +25,11 @@ export class SideToppingsComponent implements OnInit {
     //this.channelsActive = true;
   }
 
-  closeChannels() {
-    if (this.channelsActive) {
-      this.channelsActive = false;
-    }
-  }
-
   showDirectMessages() {
-    this.directmessagesActive = true;
+    this.directmessagesActive = !this.directmessagesActive;
   }
 
   showApps() {
-    this.appsActive = true;
+    this.appsActive = !this.appsActive;
   }
 }
