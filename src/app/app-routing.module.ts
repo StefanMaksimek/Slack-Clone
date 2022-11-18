@@ -30,7 +30,11 @@ const routes: Routes = [
   {
     path: 'output',
     component: OutputComponent,
-    ...canActivate(() => redirectUnauthorizedTo(['signin'])),
+    canActivate: [AuthGuard],
+    data: {
+      AuthGuardPipe: () => redirectUnauthorizedTo(['signin']),
+    },
+    // ...canActivate(() => redirectUnauthorizedTo(['signin'])),
   },
 ];
 
