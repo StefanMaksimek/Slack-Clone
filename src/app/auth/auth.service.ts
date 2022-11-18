@@ -1,4 +1,3 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import {
   Auth,
@@ -6,10 +5,10 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
 } from '@angular/fire/auth';
+
 import { updateProfile } from '@firebase/auth';
-import { BehaviorSubject, forkJoin, from, pluck, switchMap } from 'rxjs';
+import { BehaviorSubject, from, switchMap } from 'rxjs';
 import { SigninCredentials, SignupCredentials } from './auth.model';
-import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -19,16 +18,7 @@ export class AuthService {
 
   readonly isLoggedIn$ = authState(this.auth);
 
-  constructor(private auth: Auth, private http: HttpClient) {}
-
-  //check apiUrl
-  getStreamToken() {
-    // return this.http
-    //   .post<{ token: string }>(`${environment.apiUrl}/createStreamToken`, {
-    //     user: this.getCurrentUser(),
-    //   })
-    //   .pipe(pluck('token'));
-  }
+  constructor(private auth: Auth) {}
 
   getCurrentUser() {
     return this.auth.currentUser!;
@@ -46,32 +36,5 @@ export class AuthService {
 
   signOut() {
     return from(this.auth.signOut());
-  }
-
-  signUp___({ email, password, displayName }: SignupCredentials) {
-    // return from(
-    //   createUserWithEmailAndPassword(this.auth, email, password)
-    // ).pipe(
-    //   switchMap(({ user }) =>
-    //     forkJoin([
-    //       updateProfile(user, { displayName }),
-    //       this.http.post(`${environment.apiUrl}/createStreamUser`, {
-    //         user: { ...user, displayName },
-    //       }),
-    //     ])
-    //   )
-    // );
-  }
-
-  //Check apiUrl
-  signOut___() {
-    //  const user = this.auth.currentUser;
-    //  return from(this.auth.signOut()).pipe(
-    //    switchMap(() =>
-    //
-    //      this.http.post(`${environment.apiUrl}/revokeStreamUserToken`, { user })
-    //    )
-    //  );
-    //}
   }
 }
