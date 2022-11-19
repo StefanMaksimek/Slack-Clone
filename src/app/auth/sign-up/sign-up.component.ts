@@ -1,4 +1,6 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { user } from '@angular/fire/auth';
+import { Firestore } from '@angular/fire/firestore';
 import {
   FormBuilder,
   FormControl,
@@ -7,6 +9,7 @@ import {
 } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { collection, doc, setDoc } from 'firebase/firestore';
 import { AuthService } from '../auth.service';
 @Component({
   selector: 'app-sign-up',
@@ -19,7 +22,8 @@ export class SignUpComponent implements OnInit {
   constructor(
     private auth: AuthService,
     private router: Router,
-    private snackbar: MatSnackBar
+    private snackbar: MatSnackBar,
+    private firestore: Firestore
   ) {}
 
   ngOnInit(): void {
@@ -33,11 +37,18 @@ export class SignUpComponent implements OnInit {
   signUp() {
     this.auth.signUp(this.form.value).subscribe({
       next: () => this.router.navigate(['output']),
+      //next: () => this.createFirestoreUser(user),
       error: (error) => this.snackbar.open(error.message),
     });
   }
 
   switchToSignIn() {
     this.router.navigate(['signin']);
+  }
+
+  createFirestoreUser(user: any) {
+    const userRef = collection(this.firestore, 'users');
+    setDoc(doc(userRef), user);
+    console.log(user);
   }
 }

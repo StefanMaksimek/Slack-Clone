@@ -5,10 +5,14 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
 } from '@angular/fire/auth';
+import { Firestore } from '@angular/fire/firestore';
 
 import { updateProfile } from '@firebase/auth';
-import { BehaviorSubject, from, switchMap } from 'rxjs';
+import { collection, doc, setDoc } from 'firebase/firestore';
+import { BehaviorSubject, forkJoin, from, switchMap } from 'rxjs';
 import { SigninCredentials, SignupCredentials } from './auth.model';
+
+import { getAuth } from 'firebase/auth';
 
 @Injectable({
   providedIn: 'root',
@@ -18,7 +22,11 @@ export class AuthService {
 
   readonly isLoggedIn$ = authState(this.auth);
 
-  constructor(private auth: Auth) {}
+  userRef: any;
+
+  constructor(private auth: Auth, private firestore: Firestore) {
+    this.userRef = collection(this.firestore, 'users');
+  }
 
   getCurrentUser() {
     return this.auth.currentUser!;
@@ -31,10 +39,24 @@ export class AuthService {
   signUp({ email, password, displayName }: SignupCredentials) {
     return from(
       createUserWithEmailAndPassword(this.auth, email, password)
-    ).pipe(switchMap(({ user }) => updateProfile(user, { displayName })));
+    ).pipe(
+      switchMap(({ user }) =>
+        forkJoin([
+          updateProfile(user, { displayName }),
+          //console.log(user),
+
+          setDoc(doc(this.userRef), { user: 'user' }),
+        ])
+      )
+    );
   }
 
   signOut() {
     return from(this.auth.signOut());
+  }
+
+  createFirestoreUser(user: any) {
+    setDoc(doc(this.userRef), user);
+    console.log(user);
   }
 }

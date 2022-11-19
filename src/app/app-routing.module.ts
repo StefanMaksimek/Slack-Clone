@@ -13,7 +13,6 @@ import { OutputComponent } from './output/output.component';
 
 const routes: Routes = [
   { path: 'channel', component: ChannelComponent },
-  { path: 'output', component: OutputComponent },
 
   //for sign-in
   { path: '', redirectTo: 'output', pathMatch: 'full' },
@@ -30,11 +29,11 @@ const routes: Routes = [
   {
     path: 'output',
     component: OutputComponent,
-    canActivate: [AuthGuard],
-    data: {
-      AuthGuardPipe: () => redirectUnauthorizedTo(['signin']),
-    },
-    // ...canActivate(() => redirectUnauthorizedTo(['signin'])),
+    //canActivate: [AuthGuard],
+    //data: {
+    //  AuthGuardPipe: () => redirectUnauthorizedTo(['signin']),
+    //},
+    ...canActivate(() => redirectUnauthorizedTo(['signin'])),
   },
 ];
 
