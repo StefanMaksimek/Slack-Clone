@@ -14,41 +14,32 @@ export class OutputComponent implements OnInit {
   path: string = 'hrfjkhgbvf4f65g4fg4';
   messages: any = [
     {
-      userName: 'Max Mustermann',
+      userName: 'torsten',
+      message: 'bhnvjagbs h hguvgh vguhgh vuisuvhaus ',
+      timeStamp: new Date().getTime(),
+      channel: 'Angular',
       profilePic: 'profile.png',
-      timeStamp: 32763642,
-      message: 'Hallo wie gehst ?',
     },
     {
-      userName: 'Eric Mustermann',
-      profilePic: 'suit_men.png',
-      timeStamp: 327636642,
-      message: 'Hallo wie gehst ?',
-    },
-    {
-      userName: 'Torsten Mustermann',
-      profilePic: 'suit_women.png',
-      timeStamp: 32963642,
-      message: 'Hallo wie gehst ?',
-    },
-    {
-      userName: 'Kantholztoni',
+      userName: 'torsten',
+      message: 'bhnvjagbs h hguvgh vguhgh vuisuvhaus ',
+      timeStamp: new Date().getTime(),
+      channel: 'Angular',
       profilePic: 'profile.png',
-      timeStamp: 32767842,
-      message: 'Hallo wie gehst ?',
     },
     {
-      userName: 'Tortentoni',
+      userName: 'torsten',
+      message: 'bhnvjagbs h hguvgh vguhgh vuisuvhaus ',
+      timeStamp: new Date().getTime(),
+      channel: 'Angular',
       profilePic: 'profile.png',
-      timeStamp: 32763642,
-      message: 'Hallo wie gehst ?',
     },
     {
-      userName: 'GürtelGustav',
-      profilePic: 'suit_women.png',
-      timeStamp: 32768942,
-      message:
-        'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Qui, modi. Quasi, ab?',
+      userName: 'torsten',
+      message: 'bhnvjagbs h hguvgh vguhgh vuisuvhaus ',
+      timeStamp: new Date().getTime(),
+      channel: 'Angular',
+      profilePic: 'profile.png',
     },
   ];
 
@@ -78,13 +69,13 @@ export class OutputComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    //this.getThread('messages');
+    //this.getMessages('messages');
   }
 
-  getThread(coll: string) {
+  getMessages(coll: string) {
     let messageRef = collection(this.firestore, coll);
-    docData(doc(messageRef, this.path)).subscribe((message: any) => {
-      this.messages = message.messages;
+    docData(doc(messageRef, this.path)).subscribe((messages: any) => {
+      this.messages = messages;
     });
   }
 }

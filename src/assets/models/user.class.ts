@@ -10,7 +10,7 @@ export class User {
     this.displayName = obj ? obj.displayName : 'displayName';
     this.email = obj ? obj.email : 'email';
     this.uid = obj ? obj.uid : 'uid';
-    this.profilePic = obj ? obj.profilePic : 'profilePic';
+    this.profilePic = obj.profilePic ? obj.profilePic : 'profilePic';
     this.channels = obj ? obj.channels : 'channels';
     this.directMessages = obj ? obj.directMessages : 'directMessages';
   }
