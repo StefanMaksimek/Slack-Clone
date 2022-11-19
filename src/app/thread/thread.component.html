@@ -21,17 +21,19 @@
   </div>
 
   <div class="hr">
-    <span *ngIf="thread.messages"> {{ thread.messages.length }} Antworten</span>
+    <span *ngIf="thread.threadMessages">
+      {{ thread.threadMessages.length }} Antworten</span
+    >
     <hr />
   </div>
 
-  <div class="messages" *ngFor="let message of thread.messages">
+  <div class="messages" *ngFor="let message of thread.threadMessages">
     <div class="message-box">
       <img src="../../assets/img/suit_men.png" alt="" />
 
       <div class="message">
         <div class="message-header">
-          <h3>User-Name</h3>
+          <h3>{{ message.userName ? message.userName : "noName" }}</h3>
           <span>{{ message.timeStamp }}</span>
         </div>
         <p>
