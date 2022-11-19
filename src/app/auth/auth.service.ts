@@ -12,8 +12,6 @@ import { collection, doc, setDoc } from 'firebase/firestore';
 import { BehaviorSubject, forkJoin, from, switchMap } from 'rxjs';
 import { SigninCredentials, SignupCredentials } from './auth.model';
 
-import { getAuth } from 'firebase/auth';
-
 @Injectable({
   providedIn: 'root',
 })
