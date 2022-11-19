@@ -37,3 +37,12 @@ mat-toolbar {
     border: none;
   }
 }
+
+.not-logged-in {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  p {
+    margin: 0;
+  }
+}
