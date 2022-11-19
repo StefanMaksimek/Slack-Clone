@@ -8,6 +8,9 @@
                 <div class="sidebarIcon " *ngFor="let channel of channels; let i = index;">
                    <b> {{ channels[i] }} </b>
                 </div>
+                <div class="sidebarIcon ">
+                    <b (click)="openDialog()"> Channel hinzufügen </b>
+                </div>
             </div>
         </div>
 
@@ -29,6 +32,9 @@
             <div *ngIf="appsActive" class="channels">
                 <div class="sidebarIcon " *ngFor="let app of apps; let i = index;">
                    <b> {{ apps[i] }} </b>
+                </div>
+                <div class="sidebarIcon ">
+                    <b> App hinzufügen </b>
                 </div>
             </div>
         </div>

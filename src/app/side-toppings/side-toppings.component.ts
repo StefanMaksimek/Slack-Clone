@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import {MatDialog, MatDialogRef} from '@angular/material/dialog';
+import { AddChannelComponent } from '../add-channel/add-channel.component';
 
 @Component({
   selector: 'app-side-toppings',
@@ -16,13 +17,12 @@ export class SideToppingsComponent implements OnInit {
   directmessagesActive = false;
   appsActive = false;
 
-  constructor(private _router: Router) {}
+  constructor(public dialog: MatDialog) {}
 
   ngOnInit(): void {}
 
   showChannels() {
     this.channelsActive = !this.channelsActive;
-    //this.channelsActive = true;
   }
 
   showDirectMessages() {
@@ -31,5 +31,11 @@ export class SideToppingsComponent implements OnInit {
 
   showApps() {
     this.appsActive = !this.appsActive;
+  }
+
+  openDialog() {
+    this.dialog.open(AddChannelComponent, {
+      width: '250px',
+    });
   }
 }

@@ -35,6 +35,8 @@ import { RouterModule } from '@angular/router';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { HttpClientModule } from '@angular/common/http';
 import { MatCardModule } from '@angular/material/card';
+import {MatDialogModule} from '@angular/material/dialog';
+import { AddChannelComponent } from './add-channel/add-channel.component';
 
 @NgModule({
   declarations: [
@@ -50,6 +52,7 @@ import { MatCardModule } from '@angular/material/card';
     OutputComponent,
     ThreadComponent,
     ChannelComponent,
+    AddChannelComponent,
   ],
   imports: [
     MatCardModule,
@@ -75,6 +78,7 @@ import { MatCardModule } from '@angular/material/card';
     RouterModule,
     MatSnackBarModule,
     HttpClientModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent],
