@@ -1,5 +1,9 @@
+import { ThreadMessage } from '../models/threadMessage.class';
+
 export class Thread {
-  messages: any = [
+  threadMessages: any = [
+    new ThreadMessage(),
+    new ThreadMessage().toJson(),
     {
       timeStamp: 654544644,
       message:
@@ -25,24 +29,15 @@ export class Thread {
       message:
         'Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid odit dignissimos repellendus.',
     },
+    new ThreadMessage().toJson(),
+    new ThreadMessage().toJson(),
   ];
 
   constructor(obj?: any) {}
 
   toJson() {
     return {
-      messages: this.messages,
+      threadMessages: this.threadMessages,
     };
-  }
-
-  createID(length: number) {
-    let result = '';
-    let characters =
-      'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    let charactersLength = characters.length;
-    for (var i = 0; i < length; i++) {
-      result += characters.charAt(Math.floor(Math.random() * charactersLength)); // adding one random character of characters to result
-    }
-    return result;
   }
 }

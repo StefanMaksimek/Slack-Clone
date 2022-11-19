@@ -33,7 +33,7 @@ export class ThreadComponent implements OnInit {
 
   ngOnInit(): void {
     this.getUser();
-    this.getThread();
+    //this.getThread();
   }
 
   getThread() {
