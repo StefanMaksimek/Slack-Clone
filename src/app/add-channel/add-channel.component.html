@@ -1,2 +1,15 @@
-<p>add-channel works!</p>
-<button mat-button mat-dialog-close>No</button>
+<div class="addChannelDialog">
+    <h2> Channels erstellen </h2>
+    <div class="inputFields">
+        <div>
+            <p> Name </p>
+            <input type="text" placeholder="z.B budget-planung">
+        </div>
+        <div>
+            <p>Beschreibung</p>
+            <input type="text">
+        </div>
+    </div>
+    <button mat-button mat-dialog-close>Abbrechen</button>
+    <button mat-button mat-dialog-close cdkFocusInitial>Erstellen</button>
+</div>

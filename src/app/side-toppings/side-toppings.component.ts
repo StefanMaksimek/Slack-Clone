@@ -35,7 +35,7 @@ export class SideToppingsComponent implements OnInit {
 
   openDialog() {
     this.dialog.open(AddChannelComponent, {
-      width: '250px',
+      
     });
   }
 }
