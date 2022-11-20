@@ -7,12 +7,14 @@ export class User {
   directMessages!: any[];
 
   constructor(obj?: any) {
-    this.displayName = obj ? obj.displayName : 'displayName';
-    this.email = obj ? obj.email : 'email';
-    this.uid = obj ? obj.uid : 'uid';
-    this.profilePic = obj.profilePic ? obj.profilePic : 'profilePic';
-    this.channels = obj ? obj.channels : 'channels';
-    this.directMessages = obj ? obj.directMessages : 'directMessages';
+    this.displayName = obj.displayName
+      ? obj.displayName
+      : 'User' + this.createID(5);
+    this.email = obj.email ? obj.email : 'email';
+    this.uid = obj.uid ? obj.uid : 'uid';
+    this.profilePic = obj.profilePic ? obj.profilePic : 'profile.png';
+    this.channels = obj.channels ? obj.channels : '[]';
+    this.directMessages = obj.directMessages ? obj.directMessages : '[]';
   }
 
   toJson() {
@@ -24,5 +26,15 @@ export class User {
       channels: this.channels,
       directMessages: this.directMessages,
     };
+  }
+
+  createID(length: number) {
+    let result = '';
+    let characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+    let charactersLength = characters.length;
+    for (var i = 0; i < length; i++) {
+      result += characters.charAt(Math.floor(Math.random() * charactersLength)); // adding one random character of characters to result
+    }
+    return result;
   }
 }

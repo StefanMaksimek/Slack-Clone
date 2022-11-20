@@ -32,7 +32,6 @@ export class ThreadComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getUser();
     //this.getThread();
   }
 
@@ -44,16 +43,16 @@ export class ThreadComponent implements OnInit {
     });
   }
 
-  getUser() {
-    if (this.user !== null) {
-      // The user object has basic properties such as display name, email, etc.
-      this.displayName = this.user.displayName;
-      this.email = this.user.email;
+  /**
+   *
+   * @param timeStamp in milliseconds
+   * @returns 24Hours-Time in Hours:Minuts + 'Uhr'
+   */
+  convertTimeStamp(timeStamp: any) {
+    let date = new Date(timeStamp),
+      min = ('0' + (date.getMinutes() + 1)).slice(-2),
+      hr = ('0' + (date.getHours() + 1)).slice(-2);
 
-      // The user's ID, unique to the Firebase project. Do NOT use
-      // this value to authenticate with your backend server, if
-      // you have one. Use User.getToken() instead.
-      this.uid = this.user.uid;
-    }
+    return [hr, min].join(':') + ' Uhr';
   }
 }

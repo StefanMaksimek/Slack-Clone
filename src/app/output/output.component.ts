@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { docData, Firestore } from '@angular/fire/firestore';
+import { collectionData, docData, Firestore } from '@angular/fire/firestore';
 import { collection, doc } from 'firebase/firestore';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-output',
@@ -12,6 +13,7 @@ export class OutputComponent implements OnInit {
   hoverReact = false;
 
   path: string = 'hrfjkhgbvf4f65g4fg4';
+
   messages: any = [
     {
       userName: 'torsten',
@@ -69,13 +71,27 @@ export class OutputComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    //this.getMessages('messages');
+    this.getMessages('messages');
   }
 
-  getMessages(coll: string) {
+  //
+  getMessages(coll: any) {
     let messageRef = collection(this.firestore, coll);
-    docData(doc(messageRef, this.path)).subscribe((messages: any) => {
+    collectionData(messageRef).subscribe((messages: any) => {
       this.messages = messages;
     });
+  }
+
+  /**
+   *
+   * @param timeStamp in milliseconds
+   * @returns 24Hours-Time in Hours:Minuts + 'Uhr'
+   */
+  convertTimeStamp(timeStamp: any) {
+    let date = new Date(timeStamp),
+      min = ('0' + (date.getMinutes() + 1)).slice(-2),
+      hr = ('0' + (date.getHours() + 1)).slice(-2);
+
+    return [hr, min].join(':') + ' Uhr';
   }
 }

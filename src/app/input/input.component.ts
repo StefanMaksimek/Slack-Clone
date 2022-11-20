@@ -50,8 +50,6 @@ export class InputComponent implements OnInit {
 
   ngOnInit(): void {
     this.getUser();
-    console.log('user', this.user);
-    this.updateUser();
   }
 
   sendMessage() {
@@ -88,11 +86,5 @@ export class InputComponent implements OnInit {
   updateMessages() {
     const mesRef = collection(this.firestore, 'messages');
     setDoc(doc(mesRef, this.message.ID), this.message.toJson());
-  }
-
-  //toDo
-  updateUser() {
-    const gameRef = collection(this.firestore, 'users');
-    setDoc(doc(gameRef, this.user.uid), this.user.toJson());
   }
 }
