@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { collectionData, docData, Firestore } from '@angular/fire/firestore';
 import { collection, doc } from 'firebase/firestore';
 import { Observable } from 'rxjs';
+import { ThreadComponent } from '../thread/thread.component';
 
 @Component({
   selector: 'app-output',
@@ -45,7 +46,7 @@ export class OutputComponent implements OnInit {
     },
   ];
 
-  constructor(private firestore: Firestore) {}
+  constructor(private firestore: Firestore, public thread: ThreadComponent) {}
 
   onMouseover(i: any): void {
     let id: any = 'hover-container' + i;
@@ -75,6 +76,14 @@ export class OutputComponent implements OnInit {
   }
 
   //
+
+  openThread(messageID: any) {
+    console.log(messageID);
+    console.log(this.thread.path);
+    this.thread.path = messageID;
+    console.log(this.thread.path);
+  }
+
   getMessages(coll: any) {
     let messageRef = collection(this.firestore, coll);
     collectionData(messageRef).subscribe((messages: any) => {

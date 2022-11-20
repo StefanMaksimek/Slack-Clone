@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Injectable, OnInit } from '@angular/core';
 import { docData, Firestore } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
 import { collection, doc } from 'firebase/firestore';
@@ -10,6 +10,9 @@ import { getAuth } from 'firebase/auth';
   selector: 'app-thread',
   templateUrl: './thread.component.html',
   styleUrls: ['./thread.component.scss'],
+})
+@Injectable({
+  providedIn: 'root',
 })
 export class ThreadComponent implements OnInit {
   getAuth = getAuth();
