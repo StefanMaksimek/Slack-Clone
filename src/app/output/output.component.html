@@ -39,7 +39,7 @@
 
         <div
           class="hover-effect"
-          (click)="openThread(message.ID); thread.toggle()"
+          (click)="openThread(message.ID); thread.open()"
         >
           <img class="react-icons" src="assets/img/icons/chat.ico" />
           <span>Reply</span>
@@ -48,7 +48,7 @@
     </div>
     <div id="dialog"></div>
 
-    <app-input class="input" #input></app-input>
+    <app-input class="input" #input [component]="component"></app-input>
   </mat-drawer-content>
 
   <mat-drawer #thread mode="side" opened position="end">

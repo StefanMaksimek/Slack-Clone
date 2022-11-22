@@ -1,6 +1,7 @@
 import {
   Component,
   ElementRef,
+  Input,
   OnInit,
   Renderer2,
   ViewChild,
@@ -28,6 +29,8 @@ export class InputComponent implements OnInit {
   formatting: boolean = true;
   focusing: boolean = false;
 
+  @Input() component: any;
+
   channel: any = 'Angular';
   user!: User;
   message!: Message;
@@ -53,6 +56,28 @@ export class InputComponent implements OnInit {
   }
 
   sendMessage() {
+    console.log(this.component);
+
+    if (this.component == 'output') {
+      this.sendMessageToMessages();
+    }
+    if (this.component == 'thread') {
+      this.sendMessageToThread();
+    }
+  }
+
+  sendMessageToThread() {
+    this.message = new Message({
+      userName: this.user.displayName,
+      message: this.input.nativeElement.value,
+      timeStamp: new Date().getTime(),
+      channel: this.channel,
+    });
+    this.input.nativeElement.value = '';
+    this.updateMessages();
+  }
+
+  sendMessageToMessages() {
     this.message = new Message({
       userName: this.user.displayName,
       message: this.input.nativeElement.value,

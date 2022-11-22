@@ -25,6 +25,7 @@ export class ThreadComponent implements OnInit {
   threadRef: any;
   thread: any = new Thread();
   path: string = 'KlrT25uPqcdzk69nzk8G';
+  component: string = 'thread';
 
   constructor(
     private firestore: Firestore,
@@ -35,7 +36,7 @@ export class ThreadComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    //this.getThread();
+    this.getThread();
   }
 
   getThread() {

@@ -14,6 +14,7 @@ export class OutputComponent implements OnInit {
   hoverReact = false;
 
   path: string = 'hrfjkhgbvf4f65g4fg4';
+  component: string = 'output';
 
   messages: any = [
     {
@@ -78,10 +79,8 @@ export class OutputComponent implements OnInit {
   //
 
   openThread(messageID: any) {
-    console.log(messageID);
-    console.log(this.thread.path);
     this.thread.path = messageID;
-    console.log(this.thread.path);
+    this.thread.getThread();
   }
 
   getMessages(coll: any) {
