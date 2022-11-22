@@ -37,9 +37,12 @@
           <span (click)="openDialog()">React</span>
         </div>
 
-        <div class="hover-effect">
+        <div
+          class="hover-effect"
+          (click)="openThread(message.ID); thread.toggle()"
+        >
           <img class="react-icons" src="assets/img/icons/chat.ico" />
-          <span (click)="openThread(message.ID)">Reply</span>
+          <span>Reply</span>
         </div>
       </div>
     </div>
@@ -48,13 +51,13 @@
     <app-input class="input" #input></app-input>
   </mat-drawer-content>
 
-  <mat-drawer mode="side" opened position="end">
+  <mat-drawer #thread mode="side" opened position="end">
     <mat-toolbar class="thread-header">
       <div>
         <h2>Thread</h2>
         <span># 'Side-topping'</span>
       </div>
-      <button mat-icon-button>
+      <button mat-icon-button (click)="thread.close()">
         <mat-icon>close</mat-icon>
       </button>
     </mat-toolbar>

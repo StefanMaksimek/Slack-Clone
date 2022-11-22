@@ -46,7 +46,9 @@
 
 app-input {
   position: absolute;
-  left: $spacing-S;
-  right: $spacing-S;
-  bottom: $spacing-M;
+  z-index: 100;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: $spacing-S;
 }
