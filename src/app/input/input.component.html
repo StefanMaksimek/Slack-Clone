@@ -73,13 +73,18 @@
 
     <div class="icon-holder space-between">
       <div class="icon-holder">
-        <mat-icon
+
+        <div class="file-upload">
+          <mat-icon (click)="fileInput.click()"
           matTooltip=" "
           matTooltipPosition="above"
           matTooltipShowDelay="250"
           class="white add"
           >add</mat-icon
         >
+          <input class="upload-input" hidden #fileInput (change)="uploadFile($event)" type="file" id="file" name="image" accept=".png, .jpg">
+        </div>
+      
         <div class="vr white"></div>
         <mat-icon
           matTooltip=" "

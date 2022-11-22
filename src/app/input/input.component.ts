@@ -12,6 +12,9 @@ import { collection, doc, setDoc } from 'firebase/firestore';
 import { Message } from 'src/assets/models/message.class';
 import { User } from 'src/assets/models/user.class';
 import { AuthService } from '../auth/auth.service';
+import { Observable } from 'rxjs';
+import { AngularFireStorage } from '@angular/fire/compat/storage';
+import { finalize } from 'rxjs/operators';
 
 @Component({
   selector: 'app-input',
@@ -35,9 +38,17 @@ export class InputComponent implements OnInit {
   user!: User;
   message!: Message;
 
+  // file upload
+  fileName: any = '';
+  fb: any;
+  selectedFile:any;
+  downloadURL:any = Observable<string>;
+  //
+
   constructor(
     private renderer: Renderer2,
     private firestore: Firestore,
+    private storage: AngularFireStorage,
     public auth: AuthService
   ) {
     this.renderer.listen('window', 'click', (e: any) => {
@@ -111,5 +122,35 @@ export class InputComponent implements OnInit {
   updateMessages() {
     const mesRef = collection(this.firestore, 'messages');
     setDoc(doc(mesRef, this.message.ID), this.message.toJson());
+  }
+
+  // upload file to storage
+  uploadFile(event:any) {
+    const file = event.target.files[0];
+    const filePath = `uploadedImages/${file.name}`;
+    const fileRef = this.storage.ref(filePath);
+    const task = this.storage.upload(filePath, file);
+    this.fileName = file.name;
+    task
+      .snapshotChanges()
+      .pipe(
+        finalize(() => {
+          this.downloadURL = fileRef.getDownloadURL();
+          this.downloadURL.subscribe((url:any) => { 
+            if (url) {
+              this.fb = url;
+            }
+          });
+        })
+      )
+      .subscribe(url => {
+        if (url) {
+          this.emptyTask(task)
+        }
+      });
+  }
+
+  emptyTask(task:any) {
+    task = '';
   }
 }
