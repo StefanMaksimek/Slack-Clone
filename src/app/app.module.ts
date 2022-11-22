@@ -37,6 +37,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatCardModule } from '@angular/material/card';
 import {MatDialogModule} from '@angular/material/dialog';
 import { AddChannelComponent } from './add-channel/add-channel.component';
+import { FIREBASE_OPTIONS } from '@angular/fire/compat';
+import { AddAppComponent } from './add-app/add-app.component';
+
 
 @NgModule({
   declarations: [
@@ -53,6 +56,7 @@ import { AddChannelComponent } from './add-channel/add-channel.component';
     ThreadComponent,
     ChannelComponent,
     AddChannelComponent,
+    AddAppComponent,
   ],
   imports: [
     MatCardModule,
@@ -80,7 +84,7 @@ import { AddChannelComponent } from './add-channel/add-channel.component';
     HttpClientModule,
     MatDialogModule
   ],
-  providers: [],
+  providers: [ { provide: FIREBASE_OPTIONS, useValue: environment.firebase }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

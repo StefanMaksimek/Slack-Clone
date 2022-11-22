@@ -5,11 +5,11 @@
                 <mat-icon fontIcon="arrow_right"></mat-icon> Channels
             </div>
             <div *ngIf="channelsActive" class="channels">
-                <div class="sidebarIcon " *ngFor="let channel of channels; let i = index;">
-                   <b> {{ channels[i] }} </b>
+                <div class="sidebarIcon " *ngFor="let channel of allChannels; let i = index;">
+                   <b> {{ channel.name }} </b>
                 </div>
                 <div class="sidebarIcon ">
-                    <b (click)="openDialog()"> Channel hinzufügen </b>
+                    <b (click)="openChannelDialog()"> Channel hinzufügen </b>
                 </div>
             </div>
         </div>
@@ -30,11 +30,11 @@
                 <mat-icon fontIcon="arrow_right"></mat-icon> Apps
             </div>
             <div *ngIf="appsActive" class="channels">
-                <div class="sidebarIcon " *ngFor="let app of apps; let i = index;">
-                   <b> {{ apps[i] }} </b>
+                <div class="sidebarIcon " *ngFor="let app of allApps; let i = index;">
+                   <b> {{ app.name }} </b>
                 </div>
                 <div class="sidebarIcon ">
-                    <b> App hinzufügen </b>
+                    <b (click)="openAppDialog()"> App hinzufügen </b>
                 </div>
             </div>
         </div>
