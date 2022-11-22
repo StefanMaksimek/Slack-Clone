@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 import {MatDialog, MatDialogRef} from '@angular/material/dialog';
+import { Channel } from 'src/assets/models/channel.class';
 import { AddChannelComponent } from '../add-channel/add-channel.component';
 
 @Component({
@@ -13,13 +15,24 @@ export class SideToppingsComponent implements OnInit {
   directMessages = ['Stefan', 'Robert', 'Baris'];
   apps = ['Slack-Clone Team'];
 
+  channel = new Channel();
+  allChannels = [];
+
   channelsActive = false;
   directmessagesActive = false;
   appsActive = false;
 
-  constructor(public dialog: MatDialog) {}
+  constructor(public dialog: MatDialog, private firestore: AngularFirestore) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.firestore
+    .collection('channels')
+    .valueChanges({idField: 'id'})
+    .subscribe((changes: any)=> {
+      console.log('received changes', changes);
+      this.allChannels = changes;
+    })
+  }
 
   showChannels() {
     this.channelsActive = !this.channelsActive;
@@ -34,8 +47,6 @@ export class SideToppingsComponent implements OnInit {
   }
 
   openDialog() {
-    this.dialog.open(AddChannelComponent, {
-      
-    });
+    this.dialog.open(AddChannelComponent);
   }
 }

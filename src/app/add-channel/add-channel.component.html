@@ -3,13 +3,13 @@
     <div class="inputFields">
         <div>
             <p> Name </p>
-            <input type="text" placeholder="z.B budget-planung">
+            <input [(ngModel)]="channel.name" required type="text" placeholder="z.B budget-planung">
         </div>
         <div>
             <p>Beschreibung</p>
-            <input type="text">
+            <input [(ngModel)]="channel.description" type="text">
         </div>
     </div>
     <button mat-button mat-dialog-close>Abbrechen</button>
-    <button mat-button mat-dialog-close cdkFocusInitial>Erstellen</button>
+    <button (click)="addChannel()" mat-button mat-dialog-close cdkFocusInitial>Erstellen</button>
 </div>
