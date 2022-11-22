@@ -11,7 +11,6 @@ import { MatDialog } from '@angular/material/dialog';
 export class AddChannelComponent implements OnInit {
   channel = new Channel();
 
-
   constructor(private firestore: AngularFirestore,public dialog: MatDialog) { }
 
   ngOnInit(): void {

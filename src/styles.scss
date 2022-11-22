@@ -11,3 +11,17 @@ body {
   background-color: $black;
   color: $white;
 }
+
+.addTopicDialog {
+  width: 350px;
+  input {
+      width: 100%;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      margin-bottom: 10px;
+  }
+
+  .inputFields {
+      padding-bottom: 10px;
+  }
+}
