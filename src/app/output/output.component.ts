@@ -31,7 +31,6 @@ export class OutputComponent implements OnInit {
 
   ngOnInit(): void {
     this.getMessages('messages');
-    console.log('message', this.message);
   }
 
   onMouseover(i: any): void {
@@ -59,13 +58,10 @@ export class OutputComponent implements OnInit {
 
   //
 
-  openThread(messageID: any, messageIndex: number) {
+  openThread(messageID: any) {
     this.thread.path = messageID;
-    this.thread.message = this.messages[messageIndex];
-    this.thread.getMessage();
-    this.thread.getThread();
-    console.log('message', this.messages[messageIndex]);
-    console.log('thread.message', this.thread.message);
+    //this.thread.getMessage(messageID);
+    this.thread.getThread(messageID);
   }
 
   getMessages(coll: any) {

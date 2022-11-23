@@ -1,4 +1,9 @@
-import { Component, Injectable, OnInit } from '@angular/core';
+import {
+  ChangeDetectorRef,
+  Component,
+  Injectable,
+  OnInit,
+} from '@angular/core';
 import { docData, Firestore } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
 import { collection, doc } from 'firebase/firestore';
@@ -18,38 +23,37 @@ import { Message } from 'src/assets/models/message.class';
 export class ThreadComponent implements OnInit {
   getAuth = getAuth();
 
-  message: Message = new Message();
+  message: any = new Message();
   threadRef: any;
   messRef: any;
   thread: Thread = new Thread();
-  path: string;
+  path: string = '8z2mq8bFFs0fxdjPFy7j';
   component: string = 'thread';
 
   constructor(
     private firestore: Firestore,
     public auth: AuthService,
-    private router: Router
+    private router: Router,
+    private changeDetectorRef: ChangeDetectorRef
   ) {
     this.threadRef = collection(this.firestore, 'threads');
-    this.messRef = collection(this.firestore, 'message');
+    this.messRef = collection(this.firestore, 'messages');
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.changeDetectorRef.detectChanges();
+  }
 
-  getThread() {
-    console.log('thread.path', this.path);
-
-    docData(doc(this.threadRef, this.path)).subscribe((thread: any) => {
-      console.log(thread);
+  getThread(messageID: string) {
+    docData(doc(this.threadRef, messageID)).subscribe((thread: any) => {
+      console.log('getThread', thread);
       this.thread = thread;
     });
   }
 
-  getMessage() {
-    console.log('thread.message', this.message);
-
-    docData(doc(this.messRef, this.path)).subscribe((message: any) => {
-      console.log(message);
+  getMessage(messageID: string) {
+    docData(doc(this.messRef, messageID)).subscribe((message: any) => {
+      console.log('getM message', message);
       this.message = message;
     });
   }

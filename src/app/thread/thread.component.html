@@ -1,21 +1,21 @@
 <div class="thread-box">
   <div class="message-box">
-    <img src="../../assets/img/{{ message.profilePic }}" alt="" />
+    <img src="../../assets/img/{{ thread.message.profilePic }}" alt="" />
 
     <div class="message">
       <div class="message-header">
-        <span class="name">{{ message.userName }} </span>
+        <span class="name">{{ thread.message.userName }} </span>
 
-        <span>{{ convertTimeStamp(message.timeStamp) }}</span>
+        <span>{{ convertTimeStamp(thread.message.timeStamp) }}</span>
       </div>
       <p>
-        {{ message.message }}
+        {{ thread.message.message }}
       </p>
     </div>
   </div>
 
   <div class="hr">
-    <span *ngIf="thread.threadMessages">
+    <span *ngIf="thread.threadMessages.length > 0">
       {{ thread.threadMessages.length }} Antworten</span
     >
     <hr />

@@ -93,6 +93,7 @@ export class InputComponent implements OnInit {
   sendMessageToMessages() {
     this.message = new Message();
     this.setMessage();
+    this.setThread();
     this.input.nativeElement.value = '';
     this.updateMessages();
     this.updateThreads();
@@ -104,6 +105,13 @@ export class InputComponent implements OnInit {
     this.message.message = this.input.nativeElement.value;
     this.message.timeStamp = new Date().getTime();
     this.message.channel = this.channel;
+  }
+
+  setThread() {
+    this.newThread = new Thread({
+      message: this.message.toJson(),
+      threadMessages: [],
+    });
   }
 
   toggleFormatting() {
