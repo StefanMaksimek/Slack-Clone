@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { collectionData, docData, Firestore } from '@angular/fire/firestore';
 import { collection, doc } from 'firebase/firestore';
 import { Observable } from 'rxjs';
+import { Message } from 'src/assets/models/message.class';
 import { ThreadComponent } from '../thread/thread.component';
 
 @Component({
@@ -15,7 +16,7 @@ export class OutputComponent implements OnInit {
 
   path: string = 'hrfjkhgbvf4f65g4fg4';
   component: string = 'output';
-
+  message: Message;
   messages: any = [
     {
       userName: 'torsten',
@@ -27,6 +28,11 @@ export class OutputComponent implements OnInit {
   ];
 
   constructor(private firestore: Firestore, public thread: ThreadComponent) {}
+
+  ngOnInit(): void {
+    this.getMessages('messages');
+    console.log('message', this.message);
+  }
 
   onMouseover(i: any): void {
     let id: any = 'hover-container' + i;
@@ -51,17 +57,15 @@ export class OutputComponent implements OnInit {
     }, 1200);
   }
 
-  ngOnInit(): void {
-    this.getMessages('messages');
-  }
-
   //
 
   openThread(messageID: any, messageIndex: number) {
     this.thread.path = messageID;
-    //this.thread.getThread();
-    console.log('messageID', messageID);
-    console.log('index', messageIndex);
+    this.thread.message = this.messages[messageIndex];
+    this.thread.getMessage();
+    this.thread.getThread();
+    console.log('message', this.messages[messageIndex]);
+    console.log('thread.message', this.thread.message);
   }
 
   getMessages(coll: any) {

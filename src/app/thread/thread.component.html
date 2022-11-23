@@ -1,18 +1,15 @@
 <div class="thread-box">
   <div class="message-box">
-    <img src="../../assets/img/suit_men.png" alt="" />
+    <img src="../../assets/img/{{ message.profilePic }}" alt="" />
 
     <div class="message">
       <div class="message-header">
-        <ng-container *ngIf="auth.isLoggedIn$ | async as user">
-          <span>{{ user?.displayName }} </span>
-        </ng-container>
-        <span>Gestern um 21:18 Uhr</span>
+        <span class="name">{{ message.userName }} </span>
+
+        <span>{{ convertTimeStamp(message.timeStamp) }}</span>
       </div>
       <p>
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Velit sequi
-        tempora quaerat? Numquam enim, provident natus illum eligendi blanditiis
-        ratione?
+        {{ message.message }}
       </p>
     </div>
   </div>
@@ -26,12 +23,12 @@
 
   <div class="messages" *ngFor="let message of thread.threadMessages">
     <div class="message-box">
-      <img src="../../assets/img/suit_men.png" alt="" />
+      <img src="../../assets/img/{{ message.profilePic }}" alt="" />
 
       <div class="message">
         <div class="message-header">
           <h3>{{ message.userName ? message.userName : "noName" }}</h3>
-          <span>{{ message.timeStamp }}</span>
+          <span>{{ convertTimeStamp(message.timeStamp) }}</span>
         </div>
         <p>
           {{ message.message }}

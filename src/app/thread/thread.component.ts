@@ -5,6 +5,7 @@ import { collection, doc } from 'firebase/firestore';
 import { Thread } from 'src/assets/models/thread.class';
 import { AuthService } from '../auth/auth.service';
 import { getAuth } from 'firebase/auth';
+import { Message } from 'src/assets/models/message.class';
 
 @Component({
   selector: 'app-thread',
@@ -17,8 +18,9 @@ import { getAuth } from 'firebase/auth';
 export class ThreadComponent implements OnInit {
   getAuth = getAuth();
 
-  threadActive: boolean = false;
+  message: Message = new Message();
   threadRef: any;
+  messRef: any;
   thread: Thread = new Thread();
   path: string;
   component: string = 'thread';
@@ -29,11 +31,10 @@ export class ThreadComponent implements OnInit {
     private router: Router
   ) {
     this.threadRef = collection(this.firestore, 'threads');
+    this.messRef = collection(this.firestore, 'message');
   }
 
-  ngOnInit(): void {
-    //this.getThread();
-  }
+  ngOnInit(): void {}
 
   getThread() {
     console.log('thread.path', this.path);
@@ -44,12 +45,21 @@ export class ThreadComponent implements OnInit {
     });
   }
 
+  getMessage() {
+    console.log('thread.message', this.message);
+
+    docData(doc(this.messRef, this.path)).subscribe((message: any) => {
+      console.log(message);
+      this.message = message;
+    });
+  }
+
   /**
    *
    * @param timeStamp in milliseconds
    * @returns 24Hours-Time in Hours:Minuts + 'Uhr' => 20:15 Uhr
    */
-  convertTimeStamp(timeStamp: any) {
+  convertTimeStamp(timeStamp: number) {
     let date = new Date(timeStamp),
       min = ('0' + (date.getMinutes() + 1)).slice(-2),
       hr = ('0' + (date.getHours() + 1)).slice(-2);

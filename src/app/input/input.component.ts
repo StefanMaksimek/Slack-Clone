@@ -15,6 +15,7 @@ import { AuthService } from '../auth/auth.service';
 import { Observable } from 'rxjs';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { finalize } from 'rxjs/operators';
+import { Thread } from 'src/assets/models/thread.class';
 
 @Component({
   selector: 'app-input',
@@ -36,7 +37,8 @@ export class InputComponent implements OnInit {
 
   channel: any = 'Angular';
   user!: User;
-  message!: Message;
+  message: Message = new Message();
+  newThread: Thread = new Thread();
 
   // file upload
   fileName: any = '';
@@ -67,8 +69,6 @@ export class InputComponent implements OnInit {
   }
 
   sendMessage() {
-    console.log(this.component);
-
     if (this.component == 'output') {
       this.sendMessageToMessages();
     }
@@ -78,14 +78,16 @@ export class InputComponent implements OnInit {
   }
 
   sendMessageToThread() {
-    this.message = new Message({
-      userName: this.user.displayName,
-      message: this.input.nativeElement.value,
-      timeStamp: new Date().getTime(),
-      channel: this.channel,
-    });
-    this.input.nativeElement.value = '';
-    this.updateMessages();
+    console.log('ToDo');
+
+    //this.message = new Message({
+    //  userName: this.user.displayName,
+    //  message: this.input.nativeElement.value,
+    //  timeStamp: new Date().getTime(),
+    //  channel: this.channel,
+    //});
+    //this.input.nativeElement.value = '';
+    //this.updateMessages();
   }
 
   sendMessageToMessages() {
@@ -93,6 +95,7 @@ export class InputComponent implements OnInit {
     this.setMessage();
     this.input.nativeElement.value = '';
     this.updateMessages();
+    this.updateThreads();
   }
 
   setMessage() {
@@ -126,6 +129,11 @@ export class InputComponent implements OnInit {
   updateMessages() {
     const mesRef = collection(this.firestore, 'messages');
     setDoc(doc(mesRef, this.message.ID), this.message.toJson());
+  }
+
+  updateThreads() {
+    const thrRef = collection(this.firestore, 'threads');
+    setDoc(doc(thrRef, this.message.ID), this.newThread.toJson());
   }
 
   // upload file to storage

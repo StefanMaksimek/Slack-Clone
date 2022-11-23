@@ -1,14 +1,23 @@
 import { User } from './user.class';
 
 export class Message {
-  userName: any = 'User' + this.createID(5);
-  profilePic: any = 'profile.png';
-  ID: any = 'empty';
-  message: any = 'message';
-  timeStamp: any = '9999999999999';
-  channel: any = 'Test';
+  userName: any;
+  profilePic: any;
+  ID: any;
+  message: any;
+  timeStamp: any;
+  channel: any;
 
-  constructor(obj?: any) {}
+  constructor(obj?: any) {
+    this.userName = obj ? obj.userName : 'User' + this.createID(5);
+    this.profilePic = obj ? obj.profilePic : 'suit_women.png';
+    this.ID = obj ? obj.ID : this.createID(20);
+    this.message = obj
+      ? obj.message
+      : 'message message message message message message';
+    this.timeStamp = obj ? obj.timeStamp : 9999999999999;
+    this.channel = obj ? obj.channel : 'Test';
+  }
 
   toJson() {
     return {
