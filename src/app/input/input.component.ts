@@ -41,8 +41,8 @@ export class InputComponent implements OnInit {
   // file upload
   fileName: any = '';
   fb: any;
-  selectedFile:any;
-  downloadURL:any = Observable<string>;
+  selectedFile: any;
+  downloadURL: any = Observable<string>;
   //
 
   constructor(
@@ -89,14 +89,18 @@ export class InputComponent implements OnInit {
   }
 
   sendMessageToMessages() {
-    this.message = new Message({
-      userName: this.user.displayName,
-      message: this.input.nativeElement.value,
-      timeStamp: new Date().getTime(),
-      channel: this.channel,
-    });
+    this.message = new Message();
+    this.setMessage();
     this.input.nativeElement.value = '';
     this.updateMessages();
+  }
+
+  setMessage() {
+    this.message.userName = this.user.displayName;
+    this.message.ID = this.message.createID(20);
+    this.message.message = this.input.nativeElement.value;
+    this.message.timeStamp = new Date().getTime();
+    this.message.channel = this.channel;
   }
 
   toggleFormatting() {
@@ -125,7 +129,7 @@ export class InputComponent implements OnInit {
   }
 
   // upload file to storage
-  uploadFile(event:any) {
+  uploadFile(event: any) {
     const file = event.target.files[0];
     const filePath = `uploadedImages/${file.name}`;
     const fileRef = this.storage.ref(filePath);
@@ -136,21 +140,21 @@ export class InputComponent implements OnInit {
       .pipe(
         finalize(() => {
           this.downloadURL = fileRef.getDownloadURL();
-          this.downloadURL.subscribe((url:any) => { 
+          this.downloadURL.subscribe((url: any) => {
             if (url) {
               this.fb = url;
             }
           });
         })
       )
-      .subscribe(url => {
+      .subscribe((url) => {
         if (url) {
-          this.emptyTask(task)
+          this.emptyTask(task);
         }
       });
   }
 
-  emptyTask(task:any) {
+  emptyTask(task: any) {
     task = '';
   }
 }

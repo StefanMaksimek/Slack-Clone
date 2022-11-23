@@ -7,14 +7,12 @@ export class User {
   directMessages!: any[];
 
   constructor(obj?: any) {
-    this.displayName = obj.displayName
-      ? obj.displayName
-      : 'User' + this.createID(5);
-    this.email = obj.email ? obj.email : 'email';
-    this.uid = obj.uid ? obj.uid : 'uid';
-    this.profilePic = obj.profilePic ? obj.profilePic : 'profile.png';
-    this.channels = obj.channels ? obj.channels : '[]';
-    this.directMessages = obj.directMessages ? obj.directMessages : '[]';
+    this.displayName = obj ? obj.displayName : 'User' + this.createID(5);
+    this.email = obj ? obj.email : 'email';
+    this.uid = obj ? obj.uid : 'uid';
+    this.profilePic = obj ? obj.profilePic : 'profile.png';
+    this.channels = obj ? obj.channels : '[]';
+    this.directMessages = obj ? obj.directMessages : '[]';
   }
 
   toJson() {

@@ -16,15 +16,11 @@ import { getAuth } from 'firebase/auth';
 })
 export class ThreadComponent implements OnInit {
   getAuth = getAuth();
-  user = this.getAuth.currentUser;
 
-  displayName: any;
-  email: any;
-  uid: any;
-
+  threadActive: boolean = false;
   threadRef: any;
-  thread: any = new Thread();
-  path: string = 'KlrT25uPqcdzk69nzk8G';
+  thread: Thread = new Thread();
+  path: string;
   component: string = 'thread';
 
   constructor(
@@ -36,21 +32,22 @@ export class ThreadComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getThread();
+    //this.getThread();
   }
 
   getThread() {
+    console.log('thread.path', this.path);
+
     docData(doc(this.threadRef, this.path)).subscribe((thread: any) => {
       console.log(thread);
-
-      this.thread = thread.thread;
+      this.thread = thread;
     });
   }
 
   /**
    *
    * @param timeStamp in milliseconds
-   * @returns 24Hours-Time in Hours:Minuts + 'Uhr'
+   * @returns 24Hours-Time in Hours:Minuts + 'Uhr' => 20:15 Uhr
    */
   convertTimeStamp(timeStamp: any) {
     let date = new Date(timeStamp),

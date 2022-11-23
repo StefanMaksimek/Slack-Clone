@@ -24,27 +24,6 @@ export class OutputComponent implements OnInit {
       channel: 'Angular',
       profilePic: 'profile.png',
     },
-    {
-      userName: 'torsten',
-      message: 'bhnvjagbs h hguvgh vguhgh vuisuvhaus ',
-      timeStamp: new Date().getTime(),
-      channel: 'Angular',
-      profilePic: 'profile.png',
-    },
-    {
-      userName: 'torsten',
-      message: 'bhnvjagbs h hguvgh vguhgh vuisuvhaus ',
-      timeStamp: new Date().getTime(),
-      channel: 'Angular',
-      profilePic: 'profile.png',
-    },
-    {
-      userName: 'torsten',
-      message: 'bhnvjagbs h hguvgh vguhgh vuisuvhaus ',
-      timeStamp: new Date().getTime(),
-      channel: 'Angular',
-      profilePic: 'profile.png',
-    },
   ];
 
   constructor(private firestore: Firestore, public thread: ThreadComponent) {}
@@ -78,9 +57,11 @@ export class OutputComponent implements OnInit {
 
   //
 
-  openThread(messageID: any) {
+  openThread(messageID: any, messageIndex: number) {
     this.thread.path = messageID;
-    this.thread.getThread();
+    //this.thread.getThread();
+    console.log('messageID', messageID);
+    console.log('index', messageIndex);
   }
 
   getMessages(coll: any) {
