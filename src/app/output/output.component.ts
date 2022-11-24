@@ -54,7 +54,7 @@ export class OutputComponent implements OnInit {
 
     setTimeout(() => {
       dialogContainer.style.display = 'none';
-    }, 1200);
+    }, 1800);
   }
 
   //
