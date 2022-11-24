@@ -17,6 +17,8 @@ export class OutputComponent implements OnInit {
   testStefan: any;
   test: any = '';
   test2: any = '';
+  test3: any = '';
+
   path: string = 'hrfjkhgbvf4f65g4fg4';
   component: string = 'output';
   message: Message;
