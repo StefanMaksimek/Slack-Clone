@@ -14,6 +14,8 @@ export class OutputComponent implements OnInit {
   index = '';
   hoverReact = false;
 
+  supertest: object;
+
   test!: string;
   path: string = 'hrfjkhgbvf4f65g4fg4';
   component: string = 'output';
