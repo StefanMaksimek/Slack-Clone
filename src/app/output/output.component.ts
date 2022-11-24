@@ -3,6 +3,7 @@ import { collectionData, docData, Firestore } from '@angular/fire/firestore';
 import { collection, doc } from 'firebase/firestore';
 import { Observable } from 'rxjs';
 import { Message } from 'src/assets/models/message.class';
+import { FireService } from '../fire.service';
 import { ThreadComponent } from '../thread/thread.component';
 
 @Component({
@@ -13,16 +14,11 @@ import { ThreadComponent } from '../thread/thread.component';
 export class OutputComponent implements OnInit {
   index = '';
   hoverReact = false;
-
-  testStefan: any;
-  test: any = '';
-  test2: any = '';
-  test3: any = '';
-
-  path: string = 'hrfjkhgbvf4f65g4fg4';
   component: string = 'output';
   message: Message;
-  messages: any = [
+
+  channelName: string = 'messages';
+  channel: any = [
     {
       userName: 'torsten',
       message: 'bhnvjagbs h hguvgh vguhgh vuisuvhaus ',
@@ -32,10 +28,16 @@ export class OutputComponent implements OnInit {
     },
   ];
 
-  constructor(private firestore: Firestore, public thread: ThreadComponent) {}
+  constructor(private firestore: Firestore, public fire: FireService) {}
 
   ngOnInit(): void {
-    this.getMessages('messages');
+    this.setChannel(this.channelName);
+  }
+
+  setChannel(channel: string) {
+    this.fire.getCollData(channel).subscribe((CollData: any) => {
+      this.channel = CollData;
+    });
   }
 
   onMouseover(i: any): void {
@@ -64,16 +66,7 @@ export class OutputComponent implements OnInit {
   //
 
   openThread(messageID: any) {
-    this.thread.path = messageID;
-    //this.thread.getMessage(messageID);
-    this.thread.getThread(messageID);
-  }
-
-  getMessages(coll: any) {
-    let messageRef = collection(this.firestore, coll);
-    collectionData(messageRef).subscribe((messages: any) => {
-      this.messages = messages;
-    });
+    this.fire.getThread(messageID);
   }
 
   /**

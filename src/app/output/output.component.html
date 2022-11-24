@@ -18,7 +18,7 @@
 
     <div
       class="user"
-      *ngFor="let message of messages; let i = index"
+      *ngFor="let message of channel; let i = index"
       id="user-container{{ i }}"
       (mouseover)="onMouseover(i)"
       (mouseout)="onMouseout(i)"
@@ -29,7 +29,7 @@
         <h3 class="user-name">{{ message.userName }}</h3>
         <h4>{{ convertTimeStamp(message.timeStamp) }}</h4>
         <span>{{ message.message }}</span>
-        <img [src]="message.pictureUrl">
+        <img [src]="message.pictureUrl" />
       </div>
 
       <div id="hover-container{{ i }}" class="hover-react">
