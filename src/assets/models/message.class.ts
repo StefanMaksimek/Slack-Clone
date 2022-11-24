@@ -7,6 +7,7 @@ export class Message {
   message: any;
   timeStamp: any;
   channel: any;
+  pictureUrl: string;
 
   constructor(obj?: any) {
     this.userName = obj ? obj.userName : 'User' + this.createID(5);
@@ -17,6 +18,7 @@ export class Message {
       : 'message message message message message message';
     this.timeStamp = obj ? obj.timeStamp : 9999999999999;
     this.channel = obj ? obj.channel : 'Test';
+    this.pictureUrl = obj ? obj.pictureUrl : '';
   }
 
   toJson() {
@@ -26,6 +28,7 @@ export class Message {
       profilePic: this.profilePic,
       message: this.message,
       timeStamp: this.timeStamp,
+      pictureUrl: this.pictureUrl,
       channel: this.channel,
     };
   }

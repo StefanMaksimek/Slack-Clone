@@ -105,6 +105,7 @@ export class InputComponent implements OnInit {
     this.message.message = this.input.nativeElement.value;
     this.message.timeStamp = new Date().getTime();
     this.message.channel = this.channel;
+    this.message.pictureUrl = this.fb;
   }
 
   setThread() {
@@ -159,6 +160,7 @@ export class InputComponent implements OnInit {
           this.downloadURL.subscribe((url: any) => {
             if (url) {
               this.fb = url;
+              console.log(this.fb);
             }
           });
         })
