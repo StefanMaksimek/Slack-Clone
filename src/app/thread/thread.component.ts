@@ -4,9 +4,7 @@ import {
   Injectable,
   OnInit,
 } from '@angular/core';
-import { docData, Firestore } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
-import { collection, doc } from 'firebase/firestore';
 import { Thread } from 'src/assets/models/thread.class';
 import { AuthService } from '../auth/auth.service';
 import { getAuth } from 'firebase/auth';
