@@ -1,4 +1,4 @@
-import { Component, Injectable, OnInit } from '@angular/core';
+import { Component, Injectable, Input, OnInit } from '@angular/core';
 import { Thread } from 'src/assets/models/thread.class';
 
 @Component({
@@ -10,7 +10,7 @@ import { Thread } from 'src/assets/models/thread.class';
   providedIn: 'root',
 })
 export class ThreadComponent implements OnInit {
-  thread: Thread = new Thread();
+  @Input() thread: any = new Thread();
   component: string = 'thread';
 
   constructor() {}

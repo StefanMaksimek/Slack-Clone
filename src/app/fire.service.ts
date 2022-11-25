@@ -12,24 +12,7 @@ export class FireService {
   threadRef: any;
   messRef: any;
 
-  constructor(private fire: Firestore) {
-    this.threadRef = collection(this.fire, 'threads');
-    this.messRef = collection(this.fire, 'messages');
-  }
-
-  getThread(messageID: string) {
-    docData(doc(this.threadRef, messageID)).subscribe((thread: any) => {
-      console.log('getThread', thread);
-      //this.thread = thread;
-    });
-  }
-
-  getMessage(messageID: string) {
-    docData(doc(this.messRef, messageID)).subscribe((message: any) => {
-      console.log('getM message', message);
-      //this.message = message;
-    });
-  }
+  constructor(private fire: Firestore) {}
 
   getCollData(collPath: string) {
     return collectionData(this.setRef(collPath));
@@ -39,12 +22,10 @@ export class FireService {
    *
    * @param collPath A slash-separated path to a collection.
    * @param docPath A slash-separated path to a document.
+   * @returns
    */
   getDocData(collPath: string, docPath: string) {
-    docData(doc(this.setRef(collPath), docPath)).subscribe((doc: any) => {
-      console.log('getM message', doc);
-      this.document = doc;
-    });
+    return docData(doc(this.setRef(collPath), docPath));
   }
 
   /**

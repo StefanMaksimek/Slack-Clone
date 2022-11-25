@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { collectionData, docData, Firestore } from '@angular/fire/firestore';
 import { collection, doc } from 'firebase/firestore';
-import { Observable } from 'rxjs';
+import { Observable, timestamp } from 'rxjs';
 import { Message } from 'src/assets/models/message.class';
+import { Thread } from 'src/assets/models/thread.class';
 import { FireService } from '../fire.service';
 import { ThreadComponent } from '../thread/thread.component';
 
@@ -16,6 +17,7 @@ export class OutputComponent implements OnInit {
   hoverReact = false;
   component: string = 'output';
   message: Message;
+  curentThread: any = new Thread();
 
   channelName: string = 'messages';
   channel: any = [
@@ -36,7 +38,9 @@ export class OutputComponent implements OnInit {
 
   setChannel(channel: string) {
     this.fire.getCollData(channel).subscribe((CollData: any) => {
-      this.channel = CollData;
+      this.channel = CollData.sort((a: Message, b: Message) => {
+        return a.timeStamp - b.timeStamp;
+      });
     });
   }
 
@@ -66,7 +70,9 @@ export class OutputComponent implements OnInit {
   //
 
   openThread(messageID: any) {
-    this.fire.getThread(messageID);
+    this.fire.getDocData('threads', messageID).subscribe((doc: any) => {
+      this.curentThread = doc;
+    });
   }
 
   /**

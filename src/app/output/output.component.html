@@ -29,7 +29,11 @@
         <h3 class="user-name">{{ message.userName }}</h3>
         <h4>{{ convertTimeStamp(message.timeStamp) }}</h4>
         <span>{{ message.message }}</span>
-        <img class="uploaded-image" *ngIf="message.pictureUrl" [src]="message.pictureUrl" />
+        <img
+          class="uploaded-image"
+          *ngIf="message.pictureUrl"
+          [src]="message.pictureUrl"
+        />
       </div>
 
       <div id="hover-container{{ i }}" class="hover-react">
@@ -49,7 +53,7 @@
     </div>
     <div id="dialog"></div>
 
-    <app-input class="input" #input [component]="component"></app-input>
+    <app-input class="input" [component]="component"></app-input>
   </mat-drawer-content>
 
   <mat-drawer #thread mode="side" closed position="end">
@@ -62,6 +66,6 @@
         <mat-icon>close</mat-icon>
       </button>
     </mat-toolbar>
-    <app-thread></app-thread>
+    <app-thread [thread]="curentThread"></app-thread>
   </mat-drawer>
 </mat-drawer-container>
