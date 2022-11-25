@@ -55,7 +55,7 @@
         >align_horizontal_left</mat-icon
       >
       <div class="vr"></div>
-      <mat-icon
+      <mat-icon (click)="textToFunction()" 
         matTooltip="code"
         matTooltipPosition="above"
         matTooltipShowDelay="250"
@@ -69,7 +69,7 @@
       >
     </div>
 
-    <input #input placeholder="Nachricht an <Side-Topping>" />
+    <input [ngClass]="{'red' : textRed}" #input placeholder="Nachricht an <Side-Topping>" />
       <div class="img-preview-container">
         <img class="img-preview" *ngIf="showPreview" [src]="fb">
         <button class="deleteImg" *ngIf="showPreview" (click)="deleteImgStorage(fb)">Delete img</button>
