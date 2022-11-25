@@ -29,7 +29,7 @@
         <h3 class="user-name">{{ message.userName }}</h3>
         <h4>{{ convertTimeStamp(message.timeStamp) }}</h4>
         <span>{{ message.message }}</span>
-        <img [src]="message.pictureUrl" />
+        <img class="uploaded-image" *ngIf="message.pictureUrl" [src]="message.pictureUrl" />
       </div>
 
       <div id="hover-container{{ i }}" class="hover-react">
