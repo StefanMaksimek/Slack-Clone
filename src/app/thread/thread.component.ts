@@ -1,14 +1,5 @@
-import {
-  ChangeDetectorRef,
-  Component,
-  Injectable,
-  OnInit,
-} from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, Injectable, OnInit } from '@angular/core';
 import { Thread } from 'src/assets/models/thread.class';
-import { AuthService } from '../auth/auth.service';
-import { getAuth } from 'firebase/auth';
-import { Message } from 'src/assets/models/message.class';
 
 @Component({
   selector: 'app-thread',
@@ -19,22 +10,12 @@ import { Message } from 'src/assets/models/message.class';
   providedIn: 'root',
 })
 export class ThreadComponent implements OnInit {
-  getAuth = getAuth();
-
-  message: any = new Message();
-
   thread: Thread = new Thread();
   component: string = 'thread';
 
-  constructor(
-    public auth: AuthService,
-    private router: Router,
-    private changeDetectorRef: ChangeDetectorRef
-  ) {}
+  constructor() {}
 
-  ngOnInit(): void {
-    this.changeDetectorRef.detectChanges();
-  }
+  ngOnInit(): void {}
 
   /**
    *
