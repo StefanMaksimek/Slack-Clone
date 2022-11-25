@@ -161,7 +161,7 @@ export class InputComponent implements OnInit {
   // upload file to storage
   uploadFile(event: any) {
     const file = event.target.files[0];
-    const filePath = `uploadedImages/${file.name}`;
+    const filePath = `uploadedImages/${file.name + Math.floor(Math.random() * 1000000000)}`;
     const fileRef = this.storage.ref(filePath);
     const task = this.storage.upload(filePath, file);
     this.fileName = file.name;
