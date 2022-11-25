@@ -17,4 +17,15 @@ export class HeaderComponent implements OnInit {
       next: () => this.router.navigate(['signin']),
     });
   }
+
+  openDialog() {
+    let id: any = 'dialog';
+    let dialogContainer: any = document.getElementById(id);
+    dialogContainer.style.display = 'flex';
+    dialogContainer.innerHTML = 'Diese Function wurde noch nicht Implementiert';
+
+    setTimeout(() => {
+      dialogContainer.style.display = 'none';
+    }, 1800);
+  }
 }

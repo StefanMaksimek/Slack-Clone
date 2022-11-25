@@ -33,6 +33,8 @@ export class InputComponent implements OnInit {
   formatting: boolean = true;
   focusing: boolean = false;
 
+  textRed = false;
+
   @Input() component: any;
 
   channel: any = 'Angular';
@@ -182,6 +184,10 @@ export class InputComponent implements OnInit {
     this.storage.storage.refFromURL(fb).delete();
     this.fb = '';
     this.showPreview = false;
+  }
+
+  textToFunction() {
+    this.textRed = true;
   }
 
 }
