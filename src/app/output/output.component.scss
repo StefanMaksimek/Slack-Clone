@@ -70,6 +70,12 @@ h3 {
   }
 }
 
+.uploaded-image {
+  display: flex;
+  width: 250px;
+  height: 250px;
+}
+
 #dialog {
   display: none;
   position: absolute;
