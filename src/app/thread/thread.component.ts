@@ -10,7 +10,7 @@ import { Thread } from 'src/assets/models/thread.class';
   providedIn: 'root',
 })
 export class ThreadComponent implements OnInit {
-  @Input() thread: any = new Thread();
+  @Input() curentThread: Thread = new Thread();
   component: string = 'thread';
 
   constructor() {}

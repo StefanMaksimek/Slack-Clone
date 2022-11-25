@@ -19,6 +19,7 @@ export class Thread {
           message: 'das funktioniert schonmal',
           timeStamp: 4589658789654,
           channel: 'Angular',
+          pictureUrl: '',
         }).toJson();
   }
 

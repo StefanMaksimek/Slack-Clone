@@ -8,7 +8,9 @@
     <div class="sidebar">
       <app-sidebar></app-sidebar>
       <div class="sidebar-active">
-        <div matTooltip="Active-Sidebar" class="sidebar-active-text">Active-Sidebar </div>
+        <div matTooltip="Active-Sidebar" class="sidebar-active-text">
+          Active-Sidebar
+        </div>
       </div>
     </div>
   </mat-drawer>
@@ -18,44 +20,48 @@
       <span>OUTPUT-HEADDER</span>
     </mat-toolbar>
 
-    <div
-      class="user"
-      *ngFor="let message of channel; let i = index"
-      id="user-container{{ i }}"
-      (mouseover)="onMouseover(i)"
-      (mouseout)="onMouseout(i)"
-    >
-      <img class="profile-pic" src="assets/img/{{ message.profilePic }}" />
-
-      <div>
-        <h3 class="user-name">{{ message.userName }}</h3>
-        <h4>{{ convertTimeStamp(message.timeStamp) }}</h4>
-        <span>{{ message.message }}</span>
-        <img
-          class="uploaded-image"
-          *ngIf="message.pictureUrl"
-          [src]="message.pictureUrl"
-        />
-      </div>
-
-      <div id="hover-container{{ i }}" class="hover-react">
-        <div class="hover-effect">
-          <img class="react-icons" src="assets/img/icons/laugh-emote.ico" />
-          <span (click)="openDialog()">React</span>
-        </div>
-
+    <div class="channel-holder">
+      <div class="channel">
         <div
-          class="hover-effect"
-          (click)="openThread(message.ID); thread.open()"
+          class="user"
+          *ngFor="let message of channel; let i = index"
+          id="user-container{{ i }}"
+          (mouseover)="onMouseover(i)"
+          (mouseout)="onMouseout(i)"
         >
-          <img class="react-icons" src="assets/img/icons/chat.ico" />
-          <span>Reply</span>
+          <img class="profile-pic" src="assets/img/{{ message.profilePic }}" />
+
+          <div>
+            <h3 class="user-name">{{ message.userName }}</h3>
+            <h4>{{ convertTimeStamp(message.timeStamp) }}</h4>
+            <span>{{ message.message }}</span>
+            <img
+              class="uploaded-image"
+              *ngIf="message.pictureUrl"
+              [src]="message.pictureUrl"
+            />
+          </div>
+
+          <div id="hover-container{{ i }}" class="hover-react">
+            <div class="hover-effect">
+              <img class="react-icons" src="assets/img/icons/laugh-emote.ico" />
+              <span (click)="openDialog()">React</span>
+            </div>
+
+            <div
+              class="hover-effect"
+              (click)="openThread(message.ID); thread.open()"
+            >
+              <img class="react-icons" src="assets/img/icons/chat.ico" />
+              <span>Reply</span>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-    <div id="dialog"></div>
+      <div id="dialog"></div>
 
-    <app-input class="input" [component]="component"></app-input>
+      <app-input class="input" [component]="component"></app-input>
+    </div>
   </mat-drawer-content>
 
   <mat-drawer #thread mode="side" closed position="end">
@@ -68,6 +74,6 @@
         <mat-icon>close</mat-icon>
       </button>
     </mat-toolbar>
-    <app-thread [thread]="curentThread"></app-thread>
+    <app-thread [curentThread]="curentThread"></app-thread>
   </mat-drawer>
 </mat-drawer-container>

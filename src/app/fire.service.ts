@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { collectionData, docData } from '@angular/fire/firestore';
-import { collection, doc } from 'firebase/firestore';
+import { collection, doc, setDoc } from 'firebase/firestore';
 import { Firestore } from '@angular/fire/firestore';
 
 @Injectable({
@@ -8,9 +8,7 @@ import { Firestore } from '@angular/fire/firestore';
 })
 export class FireService {
   document: any;
-
-  threadRef: any;
-  messRef: any;
+  actMessID: string;
 
   constructor(private fire: Firestore) {}
 
@@ -26,6 +24,16 @@ export class FireService {
    */
   getDocData(collPath: string, docPath: string) {
     return docData(doc(this.setRef(collPath), docPath));
+  }
+
+  /**
+   *
+   * @param collPath A slash-separated path to a collection.
+   * @param docPath A slash-separated path to a document.
+   * @param upData A map of the fields and values for the UPDATED document.
+   */
+  updateDocData(collPath: string, docPath: string, upData: object) {
+    setDoc(doc(this.setRef(collPath), docPath), upData);
   }
 
   /**

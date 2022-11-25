@@ -15,6 +15,7 @@ import { ThreadComponent } from '../thread/thread.component';
 export class OutputComponent implements OnInit {
   index = '';
   hoverReact = false;
+
   component: string = 'output';
   message: Message;
   curentThread: any = new Thread();
@@ -70,6 +71,7 @@ export class OutputComponent implements OnInit {
   //
 
   openThread(messageID: any) {
+    this.fire.actMessID = messageID;
     this.fire.getDocData('threads', messageID).subscribe((doc: any) => {
       this.curentThread = doc;
     });

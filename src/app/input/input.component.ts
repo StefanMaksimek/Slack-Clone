@@ -16,6 +16,8 @@ import { Observable } from 'rxjs';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { finalize, flatMap } from 'rxjs/operators';
 import { Thread } from 'src/assets/models/thread.class';
+import { FireService } from '../fire.service';
+import { ThreadMessage } from 'src/assets/models/threadMessage.class';
 
 @Component({
   selector: 'app-input',
@@ -36,6 +38,7 @@ export class InputComponent implements OnInit {
   textRed = false;
 
   @Input() component: any;
+  @Input() curentThread: Thread = new Thread();
 
   channel: any = 'Angular';
   user!: User;
@@ -47,14 +50,15 @@ export class InputComponent implements OnInit {
   fb: any;
   selectedFile: any;
   downloadURL: any = Observable<string>;
-  showPreview:boolean = false;
+  showPreview: boolean = false;
   //
 
   constructor(
     private renderer: Renderer2,
     private firestore: Firestore,
     private storage: AngularFireStorage,
-    public auth: AuthService
+    public auth: AuthService,
+    public fire: FireService
   ) {
     this.renderer.listen('window', 'click', (e: any) => {
       if (
@@ -82,40 +86,50 @@ export class InputComponent implements OnInit {
 
   sendMessageToThread() {
     console.log('ToDo');
+    console.log('curentThread', this.curentThread);
 
-    //this.message = new Message({
-    //  userName: this.user.displayName,
-    //  message: this.input.nativeElement.value,
-    //  timeStamp: new Date().getTime(),
-    //  channel: this.channel,
-    //});
-    //this.input.nativeElement.value = '';
-    //this.updateMessages();
+    this.curentThread.threadMessages.push(this.updateThread());
+    console.log('curentThread after push', this.curentThread);
+    this.fire.updateDocData('threads', this.fire.actMessID, this.curentThread);
+    this.input.nativeElement.value = '';
   }
 
   sendMessageToMessages() {
-    this.message = new Message();
     this.setMessage();
-    this.setThread();
+    this.setNewThread();
     this.input.nativeElement.value = '';
     this.updateMessages();
-    this.updateThreads();
+    this.fire.updateDocData(
+      'threads',
+      this.message.ID,
+      this.newThread.toJson()
+    );
   }
 
   setMessage() {
+    this.message = new Message();
     this.message.userName = this.user.displayName;
     this.message.ID = this.message.createID(20);
     this.message.message = this.input.nativeElement.value;
     this.message.timeStamp = new Date().getTime();
     this.message.channel = this.channel;
-    this.message.pictureUrl = this.fb;
+    this.message.pictureUrl = this.fb ? this.fb : '';
   }
 
-  setThread() {
+  setNewThread() {
     this.newThread = new Thread({
       message: this.message.toJson(),
       threadMessages: [],
     });
+  }
+
+  updateThread() {
+    return new ThreadMessage({
+      timeStamp: new Date().getTime(),
+      userName: this.user.displayName,
+      profilePic: this.user.profilePic,
+      message: this.input.nativeElement.value,
+    }).toJson();
   }
 
   toggleFormatting() {
@@ -131,6 +145,7 @@ export class InputComponent implements OnInit {
       this.user = new User({
         uid: this.fireAuthUser.uid,
         displayName: this.fireAuthUser.displayName,
+        profilePic: 'suit_women.png',
         email: this.fireAuthUser.email,
         channels: ['Angular', 'JavaSkript'],
         directMessages: [],
@@ -141,11 +156,6 @@ export class InputComponent implements OnInit {
   updateMessages() {
     const mesRef = collection(this.firestore, 'messages');
     setDoc(doc(mesRef, this.message.ID), this.message.toJson());
-  }
-
-  updateThreads() {
-    const thrRef = collection(this.firestore, 'threads');
-    setDoc(doc(thrRef, this.message.ID), this.newThread.toJson());
   }
 
   // upload file to storage
@@ -180,7 +190,7 @@ export class InputComponent implements OnInit {
     task = '';
   }
 
-  deleteImgStorage(fb:any) {
+  deleteImgStorage(fb: any) {
     this.storage.storage.refFromURL(fb).delete();
     this.fb = '';
     this.showPreview = false;
@@ -189,6 +199,4 @@ export class InputComponent implements OnInit {
   textToFunction() {
     this.textRed = true;
   }
-
 }
-
