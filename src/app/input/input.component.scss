@@ -5,10 +5,13 @@
   border-radius: $brd-radius;
   padding: $spacing-XS;
   background-color: $black;
+
   &:focus-within {
     border: 1px solid $white;
+
     form {
       .icon-holder {
+
         mat-icon,
         p {
           color: $white;
@@ -29,10 +32,12 @@
       .add {
         background-color: $grey-tr;
       }
+
       .white {
         color: $white;
         margin: $spacing-XS;
       }
+
       mat-icon,
       .vr,
       p {
@@ -44,6 +49,7 @@
         color: $grey;
         height: $icon-size-M;
         width: $icon-size-M;
+
         img {
           height: $icon-size-M;
           width: $icon-size-M;
@@ -56,6 +62,7 @@
         border-radius: 50%;
         padding: $spacing-XS;
         cursor: pointer;
+
         &:hover {
           background-color: $grey;
         }
@@ -63,9 +70,11 @@
 
       p {
         margin: 0;
+
         &:first-child {
           margin-left: $spacing-XS;
         }
+
         i {
           margin-right: 3px;
         }
@@ -89,6 +98,7 @@
       background-color: transparent;
       width: 100%;
       padding: $spacing-XS;
+
       &:focus {
         outline: none;
         color: $white;
@@ -99,5 +109,25 @@
       display: flex;
       justify-content: space-between;
     }
+  }
+}
+
+.img-preview-container {
+
+  display: flex;
+  justify-content:center;
+  align-items:flex-start;
+  flex-direction: column;
+
+  .img-preview {
+    display: flex;
+    max-width: 200px;
+    max-height: 200px;
+  }
+
+  .deleteImg {
+    display: flex;
+    width: 80px;
+    margin-top: $spacing-XS;
   }
 }

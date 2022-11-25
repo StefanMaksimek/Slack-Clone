@@ -14,7 +14,7 @@ import { User } from 'src/assets/models/user.class';
 import { AuthService } from '../auth/auth.service';
 import { Observable } from 'rxjs';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
-import { finalize } from 'rxjs/operators';
+import { finalize, flatMap } from 'rxjs/operators';
 import { Thread } from 'src/assets/models/thread.class';
 
 @Component({
@@ -45,6 +45,7 @@ export class InputComponent implements OnInit {
   fb: any;
   selectedFile: any;
   downloadURL: any = Observable<string>;
+  showPreview:boolean = false;
   //
 
   constructor(
@@ -160,6 +161,7 @@ export class InputComponent implements OnInit {
           this.downloadURL.subscribe((url: any) => {
             if (url) {
               this.fb = url;
+              this.showPreview = true;
               console.log(this.fb);
             }
           });
@@ -175,4 +177,12 @@ export class InputComponent implements OnInit {
   emptyTask(task: any) {
     task = '';
   }
+
+  deleteImgStorage(fb:any) {
+    this.storage.storage.refFromURL(fb).delete();
+    this.fb = '';
+    this.showPreview = false;
+  }
+
 }
+
