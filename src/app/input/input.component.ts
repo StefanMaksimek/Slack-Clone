@@ -40,7 +40,6 @@ export class InputComponent implements OnInit {
   @Input() component: any;
   @Input() curentThread: Thread = new Thread();
 
-  channel: any = 'Angular';
   user!: User;
   message: Message = new Message();
   newThread: Thread = new Thread();
@@ -85,11 +84,7 @@ export class InputComponent implements OnInit {
   }
 
   sendMessageToThread() {
-    console.log('ToDo');
-    console.log('curentThread', this.curentThread);
-
     this.curentThread.threadMessages.push(this.updateThread());
-    console.log('curentThread after push', this.curentThread);
     this.fire.updateDocData('threads', this.fire.actMessID, this.curentThread);
     this.input.nativeElement.value = '';
   }
@@ -98,12 +93,22 @@ export class InputComponent implements OnInit {
     this.setMessage();
     this.setNewThread();
     this.input.nativeElement.value = '';
-    this.updateMessages();
+    this.fire.updateDocData(
+      this.fire.actChannel,
+      this.message.ID,
+      this.message.toJson()
+    );
+    //this.updateMessages();
     this.fire.updateDocData(
       'threads',
       this.message.ID,
       this.newThread.toJson()
     );
+  }
+
+  updateMessages() {
+    const mesRef = collection(this.firestore, 'messages');
+    setDoc(doc(mesRef, this.message.ID), this.message.toJson());
   }
 
   setMessage() {
@@ -112,7 +117,7 @@ export class InputComponent implements OnInit {
     this.message.ID = this.message.createID(20);
     this.message.message = this.input.nativeElement.value;
     this.message.timeStamp = new Date().getTime();
-    this.message.channel = this.channel;
+    this.message.channel = this.fire.actChannel;
     this.message.pictureUrl = this.fb ? this.fb : '';
   }
 
@@ -153,15 +158,12 @@ export class InputComponent implements OnInit {
     }
   }
 
-  updateMessages() {
-    const mesRef = collection(this.firestore, 'messages');
-    setDoc(doc(mesRef, this.message.ID), this.message.toJson());
-  }
-
   // upload file to storage
   uploadFile(event: any) {
     const file = event.target.files[0];
-    const filePath = `uploadedImages/${file.name + Math.floor(Math.random() * 1000000000)}`;
+    const filePath = `uploadedImages/${
+      file.name + Math.floor(Math.random() * 1000000000)
+    }`;
     const fileRef = this.storage.ref(filePath);
     const task = this.storage.upload(filePath, file);
     this.fileName = file.name;

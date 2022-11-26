@@ -7,7 +7,7 @@ import { Firestore } from '@angular/fire/firestore';
   providedIn: 'root',
 })
 export class FireService {
-  document: any;
+  actChannel: string = 'messages';
   actMessID: string;
 
   constructor(private fire: Firestore) {}

@@ -6,7 +6,7 @@
       </mat-toolbar>
     </div>
     <div class="sidebar">
-      <app-sidebar></app-sidebar>
+      <app-sidebar (newSideTopingEvent)="updateChannel($event)"></app-sidebar>
       <div class="sidebar-active">
         <div matTooltip="Active-Sidebar" class="sidebar-active-text">
           Active-Sidebar

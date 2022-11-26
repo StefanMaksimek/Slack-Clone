@@ -20,7 +20,8 @@ export class OutputComponent implements OnInit {
   message: Message;
   curentThread: any = new Thread();
 
-  channelName: string = 'messages';
+  actSideTopping: string;
+  channelName: string;
   channel: any = [
     {
       userName: 'torsten',
@@ -34,15 +35,8 @@ export class OutputComponent implements OnInit {
   constructor(private firestore: Firestore, public fire: FireService) {}
 
   ngOnInit(): void {
-    this.setChannel(this.channelName);
-  }
-
-  setChannel(channel: string) {
-    this.fire.getCollData(channel).subscribe((CollData: any) => {
-      this.channel = CollData.sort((a: Message, b: Message) => {
-        return a.timeStamp - b.timeStamp;
-      });
-    });
+    //this.setChannel(this.channelName);
+    //this.setChannel(this.actSideTopping);
   }
 
   onMouseover(i: any): void {
@@ -68,13 +62,26 @@ export class OutputComponent implements OnInit {
     }, 1800);
   }
 
-  //
+  // Stefan ################################
+  setChannel(channel: string) {
+    this.fire.getCollData(channel).subscribe((CollData: any) => {
+      this.channel = CollData.sort((a: Message, b: Message) => {
+        return a.timeStamp - b.timeStamp;
+      });
+    });
+  }
 
   openThread(messageID: any) {
     this.fire.actMessID = messageID;
     this.fire.getDocData('threads', messageID).subscribe((doc: any) => {
       this.curentThread = doc;
     });
+  }
+
+  updateChannel(channel: string) {
+    this.channel = channel;
+    console.log('updateChannel OutputCom = ', channel);
+    console.log('this.actSideTopping OutputCom = ', this.actSideTopping);
   }
 
   /**
