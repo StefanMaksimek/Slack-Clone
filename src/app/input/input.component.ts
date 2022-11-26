@@ -18,6 +18,7 @@ import { finalize, flatMap } from 'rxjs/operators';
 import { Thread } from 'src/assets/models/thread.class';
 import { FireService } from '../fire.service';
 import { ThreadMessage } from 'src/assets/models/threadMessage.class';
+import { SideToppingsComponent } from '../side-toppings/side-toppings.component';
 
 @Component({
   selector: 'app-input',
@@ -102,7 +103,6 @@ export class InputComponent implements OnInit {
       this.message.ID,
       this.message.toJson()
     );
-    //this.updateMessages();
     this.fire.updateDocData(
       this.fire.actChannel + 'Threads',
       this.message.ID,

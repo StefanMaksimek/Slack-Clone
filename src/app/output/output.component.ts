@@ -47,19 +47,17 @@ export class OutputComponent implements OnInit {
   }
 
   // Stefan ################################
-  setChannel(channel: string) {
-    this.fire.getCollData(channel).subscribe((CollData: any) => {
-      this.channel = CollData.sort((a: Message, b: Message) => {
-        return a.timeStamp - b.timeStamp;
-      });
-    });
-  }
 
   openThread(messageID: any) {
     this.fire.actMessID = messageID;
+    console.log('openThread', this.fire.actChannel);
+    console.log('messageID', messageID);
+
     this.fire
       .getDocData(this.fire.actChannel + 'Threads', messageID)
       .subscribe((doc: any) => {
+        console.log('doc', doc);
+
         this.curentThread = doc;
       });
   }

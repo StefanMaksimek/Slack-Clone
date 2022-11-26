@@ -1,4 +1,11 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  OnChanges,
+  OnInit,
+  Output,
+  SimpleChanges,
+} from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { App } from 'src/assets/models/app.class';
@@ -13,7 +20,7 @@ import { FireService } from '../fire.service';
   templateUrl: './side-toppings.component.html',
   styleUrls: ['./side-toppings.component.scss'],
 })
-export class SideToppingsComponent implements OnInit {
+export class SideToppingsComponent implements OnInit, OnChanges {
   topics = ['Channels', 'Direktnachrichten', 'Apps'];
   directMessages = ['Stefan', 'Robert', 'Baris'];
   apps = ['Slack-Clone Team'];
@@ -59,6 +66,10 @@ export class SideToppingsComponent implements OnInit {
     this.loadChannel(this.fire.actChannel);
   }
 
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log();
+  }
+
   showChannels() {
     this.channelsActive = !this.channelsActive;
   }
@@ -84,6 +95,7 @@ export class SideToppingsComponent implements OnInit {
   loadChannel(channel: string) {
     this.setChannel(channel);
     this.fire.actChannel = channel;
+
     setTimeout(() => {
       this.newSideTopingEvent.emit(this.channelArray);
     }, 1000);
