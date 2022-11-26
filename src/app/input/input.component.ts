@@ -180,7 +180,6 @@ export class InputComponent implements OnInit {
             if (url) {
               this.fb = url;
               this.showPreview = true;
-              console.log(this.fb);
             }
           });
         })
