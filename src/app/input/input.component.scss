@@ -115,6 +115,7 @@
 .img-preview-container {
 
   display: flex;
+  position: relative;
   justify-content:center;
   align-items:flex-start;
   flex-direction: column;
@@ -123,12 +124,18 @@
     display: flex;
     max-width: 200px;
     max-height: 200px;
+    margin-bottom: $spacing-XS;
   }
 
   .deleteImg {
     display: flex;
-    width: 80px;
-    margin-top: $spacing-XS;
+    position: absolute;
+    color: red;
+    top: $spacing-XS;
+    left: 176px;
+    &:hover {
+      cursor: pointer;
+    }
   }
 }
 
