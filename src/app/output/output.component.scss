@@ -8,10 +8,8 @@ h3 {
   display: flex;
   position: relative;
   flex-direction: row;
-  margin-left: 6px;
   padding-top: $spacing-XS;
   padding-bottom: $spacing-XS;
-  border-bottom: 1px solid $white-tr;
 
   &:hover {
     background-color: #3f3f3f;
@@ -23,6 +21,7 @@ h3 {
     height: 50px;
     border-radius: 10%;
     object-fit: cover;
+    margin-left: 12px;
 
     &:hover {
       cursor: pointer;
@@ -31,6 +30,14 @@ h3 {
 
   .user-name:hover {
     cursor: pointer;
+  }
+
+  .user-time-stamp {
+    display: flex;
+    flex-direction: row;
+    .time-stamp {
+      margin-left: $spacing-XS;
+    }
   }
 }
 
@@ -72,8 +79,9 @@ h3 {
 
 .uploaded-image {
   display: flex;
-  width: 250px;
+  object-fit: cover;
   height: 250px;
+  margin-top: $spacing-XS;
 }
 
 #dialog {

@@ -32,8 +32,11 @@
           <img class="profile-pic" src="assets/img/{{ message.profilePic }}" />
 
           <div>
-            <h3 class="user-name">{{ message.userName }}</h3>
-            <h4>{{ convertTimeStamp(message.timeStamp) }}</h4>
+            <div class="user-time-stamp">
+              <h3 class="user-name">{{ message.userName }}</h3>
+              <h3 class="time-stamp">{{ convertTimeStamp(message.timeStamp) }}</h3>
+            </div>
+           
             <span>{{ message.message }}</span>
             <img
               class="uploaded-image"
