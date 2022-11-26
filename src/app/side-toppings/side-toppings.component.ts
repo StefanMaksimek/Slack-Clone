@@ -54,6 +54,9 @@ export class SideToppingsComponent implements OnInit {
         console.log('received changes', appchanges);
         this.allApps = appchanges;
       });
+
+    //Stefan
+    this.loadChannel(this.fire.actChannel);
   }
 
   showChannels() {
@@ -77,19 +80,13 @@ export class SideToppingsComponent implements OnInit {
   }
 
   //Stefan
-  loadChannel(channel: string) {
-    if (channel == 'Messages') {
-      channel = 'messages';
-    }
 
-    console.log('chanelArrey', this.channelArray);
+  loadChannel(channel: string) {
     this.setChannel(channel);
     this.fire.actChannel = channel;
-    console.log('fire.actChannel', this.fire.actChannel);
-
     setTimeout(() => {
       this.newSideTopingEvent.emit(this.channelArray);
-    }, 500);
+    }, 1000);
   }
 
   setChannel(channel: string) {

@@ -85,7 +85,11 @@ export class InputComponent implements OnInit {
 
   sendMessageToThread() {
     this.curentThread.threadMessages.push(this.updateThread());
-    this.fire.updateDocData('threads', this.fire.actMessID, this.curentThread);
+    this.fire.updateDocData(
+      this.fire.actChannel + 'Threads',
+      this.fire.actMessID,
+      this.curentThread
+    );
     this.input.nativeElement.value = '';
   }
 
@@ -100,7 +104,7 @@ export class InputComponent implements OnInit {
     );
     //this.updateMessages();
     this.fire.updateDocData(
-      'threads',
+      this.fire.actChannel + 'Threads',
       this.message.ID,
       this.newThread.toJson()
     );

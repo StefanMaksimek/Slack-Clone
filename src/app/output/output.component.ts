@@ -1,11 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { collectionData, docData, Firestore } from '@angular/fire/firestore';
-import { collection, doc } from 'firebase/firestore';
-import { Observable, timestamp } from 'rxjs';
+import { Firestore } from '@angular/fire/firestore';
 import { Message } from 'src/assets/models/message.class';
 import { Thread } from 'src/assets/models/thread.class';
 import { FireService } from '../fire.service';
-import { ThreadComponent } from '../thread/thread.component';
 
 @Component({
   selector: 'app-output',
@@ -20,24 +17,11 @@ export class OutputComponent implements OnInit {
   message: Message;
   curentThread: any = new Thread();
 
-  actSideTopping: string;
-  channelName: string;
-  channel: any = [
-    {
-      userName: 'torsten',
-      message: 'bhnvjagbs h hguvgh vguhgh vuisuvhaus ',
-      timeStamp: new Date().getTime(),
-      channel: 'Angular',
-      profilePic: 'profile.png',
-    },
-  ];
+  channel: any = [];
 
   constructor(private firestore: Firestore, public fire: FireService) {}
 
-  ngOnInit(): void {
-    //this.setChannel(this.channelName);
-    //this.setChannel(this.actSideTopping);
-  }
+  ngOnInit(): void {}
 
   onMouseover(i: any): void {
     let id: any = 'hover-container' + i;
@@ -73,15 +57,15 @@ export class OutputComponent implements OnInit {
 
   openThread(messageID: any) {
     this.fire.actMessID = messageID;
-    this.fire.getDocData('threads', messageID).subscribe((doc: any) => {
-      this.curentThread = doc;
-    });
+    this.fire
+      .getDocData(this.fire.actChannel + 'Threads', messageID)
+      .subscribe((doc: any) => {
+        this.curentThread = doc;
+      });
   }
 
   updateChannel(channel: string) {
     this.channel = channel;
-    console.log('updateChannel OutputCom = ', channel);
-    console.log('this.actSideTopping OutputCom = ', this.actSideTopping);
   }
 
   /**
