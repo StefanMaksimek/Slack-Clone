@@ -95,10 +95,6 @@ export class SideToppingsComponent implements OnInit, OnChanges {
   loadChannel(channel: string) {
     this.setChannel(channel);
     this.fire.actChannel = channel;
-
-    setTimeout(() => {
-      this.newSideTopingEvent.emit(this.channelArray);
-    }, 1000);
   }
 
   setChannel(channel: string) {
@@ -106,6 +102,7 @@ export class SideToppingsComponent implements OnInit, OnChanges {
       this.channelArray = CollData.sort((a: Message, b: Message) => {
         return a.timeStamp - b.timeStamp;
       });
+      this.newSideTopingEvent.emit(this.channelArray);
     });
   }
 }
