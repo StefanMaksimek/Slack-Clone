@@ -1,5 +1,5 @@
-<div class="holder" #holder>
-  <form class="form" (click)="focusOn()" #form>
+<div class="holder">
+  <form class="form">
     <div class="icon-holder" *ngIf="formatting">
       <p
         matTooltip="bold type"
@@ -55,7 +55,8 @@
         >align_horizontal_left</mat-icon
       >
       <div class="vr"></div>
-      <mat-icon (click)="textToFunction()" 
+      <mat-icon
+        (click)="textToFunction()"
         matTooltip="code"
         matTooltipPosition="above"
         matTooltipShowDelay="250"
@@ -69,27 +70,44 @@
       >
     </div>
 
-    <input [ngClass]="{'red' : textRed}" #input placeholder="Nachricht an <Side-Topping>" />
-      <div class="img-preview-container">
-        <img class="img-preview" *ngIf="showPreview" [src]="fb">
-        <mat-icon class="deleteImg" *ngIf="showPreview" (click)="deleteImgStorage(fb)">delete_forever</mat-icon>
-      </div>
-    
+    <input
+      [ngClass]="{ red: textRed }"
+      #input
+      placeholder="Nachricht an #{{ fire.actChannel }}"
+    />
+    <div class="img-preview-container">
+      <img class="img-preview" *ngIf="showPreview" [src]="fb" />
+      <mat-icon
+        class="deleteImg"
+        *ngIf="showPreview"
+        (click)="deleteImgStorage(fb)"
+        >delete_forever</mat-icon
+      >
+    </div>
 
     <div class="icon-holder space-between">
       <div class="icon-holder">
-
         <div class="file-upload">
-          <mat-icon (click)="fileInput.click()"
-          matTooltip=" "
-          matTooltipPosition="above"
-          matTooltipShowDelay="250"
-          class="white add"
-          >add</mat-icon
-        >
-          <input class="upload-input" hidden #fileInput (change)="uploadFile($event)" type="file" id="file" name="image" accept=".png, .jpg">
+          <mat-icon
+            (click)="fileInput.click()"
+            matTooltip="upload file"
+            matTooltipPosition="above"
+            matTooltipShowDelay="250"
+            class="white add"
+            >add</mat-icon
+          >
+          <input
+            class="upload-input"
+            hidden
+            #fileInput
+            (change)="uploadFile($event)"
+            type="file"
+            id="file"
+            name="image"
+            accept=".png, .jpg"
+          />
         </div>
-      
+
         <div class="vr white"></div>
         <mat-icon
           matTooltip=" "
@@ -148,10 +166,13 @@
         </ng-template>
       </div>
 
-      <div class="icon-holder grey">
+      <div
+        class="icon-holder grey"
+        [ngClass]="{ 'green-send-btn': !formatting }"
+      >
         <mat-icon
           (click)="sendMessage()"
-          matTooltip=" "
+          matTooltip="send message "
           matTooltipPosition="above"
           matTooltipShowDelay="250"
           >send</mat-icon

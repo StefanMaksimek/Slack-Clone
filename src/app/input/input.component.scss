@@ -1,7 +1,7 @@
 @import "../../assets/variable.scss";
 
 .holder {
-  border: 1px solid $grey;
+  border: 1px solid $white;
   border-radius: $brd-radius;
   padding: $spacing-XS;
   background-color: $black;
@@ -11,7 +11,6 @@
 
     form {
       .icon-holder {
-
         mat-icon,
         p {
           color: $white;
@@ -46,7 +45,7 @@
         align-items: center;
         font-size: $icon-size-M;
         margin: $spacing-XS;
-        color: $grey;
+        color: $white;
         height: $icon-size-M;
         width: $icon-size-M;
 
@@ -113,11 +112,10 @@
 }
 
 .img-preview-container {
-
   display: flex;
   position: relative;
-  justify-content:center;
-  align-items:flex-start;
+  justify-content: center;
+  align-items: flex-start;
   flex-direction: column;
 
   .img-preview {
@@ -141,4 +139,8 @@
 
 .red {
   color: red;
+}
+
+.green-send-btn {
+  background-color: green;
 }

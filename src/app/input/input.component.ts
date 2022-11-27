@@ -1,11 +1,4 @@
-import {
-  Component,
-  ElementRef,
-  Input,
-  OnInit,
-  Renderer2,
-  ViewChild,
-} from '@angular/core';
+import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { Firestore } from '@angular/fire/firestore';
 import { getAuth } from 'firebase/auth';
 import { collection, doc, setDoc } from 'firebase/firestore';
@@ -18,7 +11,6 @@ import { finalize, flatMap } from 'rxjs/operators';
 import { Thread } from 'src/assets/models/thread.class';
 import { FireService } from '../fire.service';
 import { ThreadMessage } from 'src/assets/models/threadMessage.class';
-import { SideToppingsComponent } from '../side-toppings/side-toppings.component';
 
 @Component({
   selector: 'app-input',
@@ -26,15 +18,12 @@ import { SideToppingsComponent } from '../side-toppings/side-toppings.component'
   styleUrls: ['./input.component.scss'],
 })
 export class InputComponent implements OnInit {
-  @ViewChild('holder') holder!: ElementRef;
-  @ViewChild('form') form!: any;
-  @ViewChild('input') input!: any;
+  @ViewChild('input') input!: ElementRef;
 
   getAuth = getAuth();
   fireAuthUser = this.getAuth.currentUser;
 
   formatting: boolean = true;
-  focusing: boolean = false;
 
   textRed = false;
 
@@ -54,22 +43,11 @@ export class InputComponent implements OnInit {
   //
 
   constructor(
-    private renderer: Renderer2,
     private firestore: Firestore,
     private storage: AngularFireStorage,
     public auth: AuthService,
     public fire: FireService
-  ) {
-    this.renderer.listen('window', 'click', (e: any) => {
-      if (
-        e.target !== this.holder &&
-        e.target !== this.input &&
-        e.target !== this.form
-      ) {
-        this.focusing = false;
-      }
-    });
-  }
+  ) {}
 
   ngOnInit(): void {
     this.getUser();
@@ -147,10 +125,6 @@ export class InputComponent implements OnInit {
     this.formatting = !this.formatting;
   }
 
-  focusOn() {
-    this.focusing = true;
-  }
-
   getUser() {
     if (this.fireAuthUser !== null) {
       this.user = new User({
@@ -175,8 +149,7 @@ export class InputComponent implements OnInit {
     this.fileName = file.name;
     task
       .snapshotChanges()
-      .pipe(
-      finalize(() => this.getUrl(fileRef)))
+      .pipe(finalize(() => this.getUrl(fileRef)))
       .subscribe((url) => {
         if (url) {
           this.emptyTask(task);
@@ -199,10 +172,11 @@ export class InputComponent implements OnInit {
   }
 
   getUrl(fileRef) {
-    fileRef.getDownloadURL().subscribe(url => { this.fb = url; 
-    if (url) {
-      this.showPreview = true;
-    }
+    fileRef.getDownloadURL().subscribe((url) => {
+      this.fb = url;
+      if (url) {
+        this.showPreview = true;
+      }
     });
   }
 }
