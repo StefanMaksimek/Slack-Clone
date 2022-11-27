@@ -67,7 +67,7 @@ export class InputComponent implements OnInit {
   sendMessageToThread() {
     this.curentThread.threadMessages.push(this.updateThread());
     this.fire.updateDocData(
-      this.fire.actChannel + 'Threads',
+      this.fire.actChannel,
       this.fire.actMessID,
       this.curentThread
     );
@@ -103,6 +103,7 @@ export class InputComponent implements OnInit {
     this.message.timeStamp = new Date().getTime();
     this.message.channel = this.fire.actChannel;
     this.message.pictureUrl = this.fb ? this.fb : '';
+    this.message.threadMessages = [];
   }
 
   setNewThread() {

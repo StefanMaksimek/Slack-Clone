@@ -31,7 +31,7 @@
         >
           <img class="profile-pic" src="assets/img/{{ message.profilePic }}" />
 
-          <div>
+          <div class="message">
             <div class="user-time-stamp">
               <h3 class="user-name">{{ message.userName }}</h3>
               <h3 class="time-stamp">
@@ -40,11 +40,32 @@
             </div>
 
             <span>{{ message.message }}</span>
+
             <img
               class="uploaded-image"
               *ngIf="message.pictureUrl"
               [src]="message.pictureUrl"
             />
+
+            <div
+              *ngIf="message.threadMessages.length > 0"
+              class="thread-answ"
+              (click)="openThread(message.ID); thread.open()"
+            >
+              {{ message.threadMessages.length }} Antworten
+              <div class="thread-answ-info">
+                <div class="open">
+                  Letzte Antwort
+                  {{
+                    convertTimeStamp(
+                      message.threadMessages[message.threadMessages.length - 1]
+                        .timeStamp
+                    )
+                  }}
+                </div>
+                <div class="hidden">Open Thread --></div>
+              </div>
+            </div>
           </div>
 
           <div id="hover-container{{ i }}" class="hover-react">
@@ -73,7 +94,7 @@
     <mat-toolbar class="thread-header">
       <div>
         <h2>Thread</h2>
-        <span># {{ fire.actChannel }}</span>
+        <span># {{ currentThreadHeadder }}</span>
       </div>
       <button mat-icon-button (click)="thread.close()">
         <mat-icon>close</mat-icon>

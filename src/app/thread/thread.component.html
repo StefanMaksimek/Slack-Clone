@@ -1,19 +1,16 @@
 <div class="thread-box">
   <div class="content" #content>
     <div class="message-box">
-      <img
-        src="../../assets/img/{{ curentThread.message.profilePic }}"
-        alt=""
-      />
+      <img src="../../assets/img/{{ curentThread.profilePic }}" alt="" />
 
       <div class="message">
         <div class="message-header">
-          <span class="name">{{ curentThread.message.userName }} </span>
+          <span class="name">{{ curentThread.userName }} </span>
 
-          <span>{{ convertTimeStamp(curentThread.message.timeStamp) }}</span>
+          <span>{{ convertTimeStamp(curentThread.timeStamp) }}</span>
         </div>
         <p>
-          {{ curentThread.message.message }}
+          {{ curentThread.message }}
         </p>
       </div>
     </div>

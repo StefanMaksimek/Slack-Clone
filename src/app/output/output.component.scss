@@ -7,12 +7,13 @@ h3 {
 .user {
   display: flex;
   position: relative;
-  flex-direction: row;
-  padding-top: $spacing-XS;
-  padding-bottom: $spacing-XS;
+  padding: $spacing-S;
 
   &:hover {
     background-color: #3f3f3f;
+  }
+  .message {
+    width: 100%;
   }
 
   .profile-pic {
@@ -21,7 +22,6 @@ h3 {
     height: 50px;
     border-radius: 10%;
     object-fit: cover;
-    margin-left: 12px;
 
     &:hover {
       cursor: pointer;
@@ -37,6 +37,37 @@ h3 {
     flex-direction: row;
     .time-stamp {
       margin-left: $spacing-XS;
+    }
+  }
+
+  .thread-answ {
+    margin-top: $spacing-XS;
+    padding: 2px;
+    display: flex;
+    border: 1px solid transparent;
+    color: $secondary;
+    cursor: pointer;
+    &:hover {
+      background-color: $darkGray;
+      border: 1px solid $white-tr;
+      border-radius: $brd-radius;
+      .hidden {
+        display: flex;
+        justify-content: space-between;
+      }
+      .open {
+        display: none;
+      }
+    }
+    .thread-answ-info {
+      margin-left: $spacing-M;
+      color: $white;
+    }
+    .hidden {
+      display: none;
+    }
+    .open {
+      display: flex;
     }
   }
 }

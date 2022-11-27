@@ -27,6 +27,7 @@ export class OutputComponent implements OnInit {
   component: string = 'output';
   message: Message;
   curentThread: any = new Thread();
+  currentThreadHeadder: string = 'Undifined';
 
   channel: any = [];
 
@@ -70,11 +71,12 @@ export class OutputComponent implements OnInit {
 
   openThread(messageID: any) {
     this.fire.actMessID = messageID;
-
     this.fire
-      .getDocData(this.fire.actChannel + 'Threads', messageID)
+      .getDocData(this.fire.actChannel, messageID)
       .subscribe((doc: any) => {
         this.curentThread = doc;
+        console.log(this.curentThread);
+        this.currentThreadHeadder = this.curentThread.channel;
       });
   }
 

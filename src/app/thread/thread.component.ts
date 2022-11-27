@@ -9,6 +9,7 @@ import {
   SimpleChanges,
   ViewChild,
 } from '@angular/core';
+import { Message } from 'src/assets/models/message.class';
 import { Thread } from 'src/assets/models/thread.class';
 
 @Component({
@@ -21,7 +22,7 @@ import { Thread } from 'src/assets/models/thread.class';
 })
 export class ThreadComponent implements OnInit, OnChanges {
   @ViewChild('content') private content: ElementRef;
-  @Input() curentThread: Thread = new Thread();
+  @Input() curentThread: Message = new Message();
   component: string = 'thread';
 
   constructor() {}

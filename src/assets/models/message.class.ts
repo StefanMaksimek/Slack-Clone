@@ -1,4 +1,4 @@
-import { User } from './user.class';
+import { ThreadMessage } from './threadMessage.class';
 
 export class Message {
   userName: any;
@@ -8,6 +8,7 @@ export class Message {
   timeStamp: any;
   channel: any;
   pictureUrl: string;
+  threadMessages: any[];
 
   constructor(obj?: any) {
     this.userName = obj ? obj.userName : 'User' + this.createID(5);
@@ -19,6 +20,9 @@ export class Message {
     this.timeStamp = obj ? obj.timeStamp : 9999999999999;
     this.channel = obj ? obj.channel : 'Test';
     this.pictureUrl = obj ? obj.pictureUrl : '';
+    this.threadMessages = obj
+      ? obj.threadMessages
+      : [new ThreadMessage().toJson(), new ThreadMessage().toJson()];
   }
 
   toJson() {
@@ -30,6 +34,7 @@ export class Message {
       timeStamp: this.timeStamp,
       pictureUrl: this.pictureUrl,
       channel: this.channel,
+      threadMessages: this.threadMessages,
     };
   }
 
