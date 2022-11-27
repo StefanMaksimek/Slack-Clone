@@ -1,12 +1,25 @@
 @import "../../assets/variable.scss";
 
 .thread-box {
-  padding: $spacing-S;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: calc(100vh - 128px);
+
+  .content {
+    overflow: auto;
+    padding: 0 $spacing-S;
+  }
+  app-input {
+    z-index: 100;
+    margin: 0 $spacing-S $spacing-S;
+  }
 }
 
 .message-box {
   display: flex;
   align-items: flex-start;
+  padding-top: $spacing-S;
   img {
     height: $spacing-L;
     width: $spacing-L;
@@ -14,10 +27,14 @@
     margin-right: $spacing-S;
     border-radius: $brd-radius;
   }
+  .messages {
+    overflow: auto;
+  }
   .message {
     display: flex;
     flex-direction: column;
     max-width: 300px;
+
     .message-header {
       display: flex;
       align-items: baseline;
@@ -45,13 +62,4 @@
     border-top: 1px solid $white-tr;
     clear: both;
   }
-}
-
-app-input {
-  position: absolute;
-  z-index: 100;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  margin: $spacing-S;
 }

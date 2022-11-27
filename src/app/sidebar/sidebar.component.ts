@@ -22,7 +22,6 @@ export class SidebarComponent implements OnInit, OnChanges {
   ngOnChanges(SideToppingFromChild: SimpleChanges): void {}
 
   updateChannel(channel: string) {
-    console.log('updateChannel SidebarCom = ', channel);
     this.newSideTopingEvent.emit(channel);
   }
 }

@@ -1,4 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  AfterViewChecked,
+  AfterViewInit,
+  Component,
+  ElementRef,
+  OnChanges,
+  OnInit,
+  QueryList,
+  ViewChild,
+} from '@angular/core';
 import { Firestore } from '@angular/fire/firestore';
 import { Message } from 'src/assets/models/message.class';
 import { Thread } from 'src/assets/models/thread.class';
@@ -10,6 +19,8 @@ import { FireService } from '../fire.service';
   styleUrls: ['./output.component.scss'],
 })
 export class OutputComponent implements OnInit {
+  @ViewChild('content') private content: ElementRef;
+
   index = '';
   hoverReact = false;
 
@@ -22,6 +33,15 @@ export class OutputComponent implements OnInit {
   constructor(private firestore: Firestore, public fire: FireService) {}
 
   ngOnInit(): void {}
+
+  scrollToBottom(): void {
+    try {
+      this.content.nativeElement.scrollTop =
+        this.content.nativeElement.scrollHeight;
+    } catch (err) {
+      console.log('output', err);
+    }
+  }
 
   onMouseover(i: any): void {
     let id: any = 'hover-container' + i;
@@ -50,20 +70,19 @@ export class OutputComponent implements OnInit {
 
   openThread(messageID: any) {
     this.fire.actMessID = messageID;
-    console.log('openThread', this.fire.actChannel);
-    console.log('messageID', messageID);
 
     this.fire
       .getDocData(this.fire.actChannel + 'Threads', messageID)
       .subscribe((doc: any) => {
-        console.log('doc', doc);
-
         this.curentThread = doc;
       });
   }
 
   updateChannel(channel: string) {
     this.channel = channel;
+    setTimeout(() => {
+      this.scrollToBottom();
+    }, 1);
   }
 
   /**

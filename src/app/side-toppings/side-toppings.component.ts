@@ -14,13 +14,14 @@ import { Message } from 'src/assets/models/message.class';
 import { AddAppComponent } from '../add-app/add-app.component';
 import { AddChannelComponent } from '../add-channel/add-channel.component';
 import { FireService } from '../fire.service';
+import { OutputComponent } from '../output/output.component';
 
 @Component({
   selector: 'app-side-toppings',
   templateUrl: './side-toppings.component.html',
   styleUrls: ['./side-toppings.component.scss'],
 })
-export class SideToppingsComponent implements OnInit, OnChanges {
+export class SideToppingsComponent implements OnInit {
   topics = ['Channels', 'Direktnachrichten', 'Apps'];
   directMessages = ['Stefan', 'Robert', 'Baris'];
   apps = ['Slack-Clone Team'];
@@ -51,23 +52,17 @@ export class SideToppingsComponent implements OnInit, OnChanges {
       .collection('channels')
       .valueChanges({ idField: 'id' })
       .subscribe((changes: any) => {
-        console.log('received changes', changes);
         this.allChannels = changes;
       });
     this.firestore
       .collection('apps')
       .valueChanges({ idField: 'id' })
       .subscribe((appchanges: any) => {
-        console.log('received changes', appchanges);
         this.allApps = appchanges;
       });
 
     //Stefan
     this.loadChannel(this.fire.actChannel);
-  }
-
-  ngOnChanges(changes: SimpleChanges): void {
-    console.log();
   }
 
   showChannels() {

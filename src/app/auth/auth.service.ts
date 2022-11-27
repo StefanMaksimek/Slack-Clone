@@ -55,6 +55,5 @@ export class AuthService {
 
   createFirestoreUser(user: any) {
     setDoc(doc(this.userRef), user);
-    console.log(user);
   }
 }

@@ -21,7 +21,7 @@
     </mat-toolbar>
 
     <div class="channel-holder">
-      <div class="channel">
+      <div class="channel" #content>
         <div
           class="user"
           *ngFor="let message of channel; let i = index"
@@ -34,9 +34,11 @@
           <div>
             <div class="user-time-stamp">
               <h3 class="user-name">{{ message.userName }}</h3>
-              <h3 class="time-stamp">{{ convertTimeStamp(message.timeStamp) }}</h3>
+              <h3 class="time-stamp">
+                {{ convertTimeStamp(message.timeStamp) }}
+              </h3>
             </div>
-           
+
             <span>{{ message.message }}</span>
             <img
               class="uploaded-image"

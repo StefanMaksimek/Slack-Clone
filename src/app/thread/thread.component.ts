@@ -1,4 +1,14 @@
-import { Component, Injectable, Input, OnInit } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  Injectable,
+  Input,
+  OnChanges,
+  OnInit,
+  SimpleChange,
+  SimpleChanges,
+  ViewChild,
+} from '@angular/core';
 import { Thread } from 'src/assets/models/thread.class';
 
 @Component({
@@ -9,13 +19,31 @@ import { Thread } from 'src/assets/models/thread.class';
 @Injectable({
   providedIn: 'root',
 })
-export class ThreadComponent implements OnInit {
+export class ThreadComponent implements OnInit, OnChanges {
+  @ViewChild('content') private content: ElementRef;
   @Input() curentThread: Thread = new Thread();
   component: string = 'thread';
 
   constructor() {}
 
   ngOnInit(): void {}
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes) {
+      setTimeout(() => {
+        this.scrollToBottom();
+      }, 1);
+    }
+  }
+
+  scrollToBottom(): void {
+    try {
+      this.content.nativeElement.scrollTop =
+        this.content.nativeElement.scrollHeight;
+    } catch (err) {
+      console.log('thread', err);
+    }
+  }
 
   /**
    *
