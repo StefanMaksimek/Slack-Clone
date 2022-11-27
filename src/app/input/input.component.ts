@@ -78,9 +78,11 @@ export class InputComponent implements OnInit {
   sendMessage() {
     if (this.component == 'output') {
       this.sendMessageToMessages();
+      this.showPreview = false;
     }
     if (this.component == 'thread') {
       this.sendMessageToThread();
+      this.showPreview = false;
     }
   }
 
@@ -174,16 +176,7 @@ export class InputComponent implements OnInit {
     task
       .snapshotChanges()
       .pipe(
-        finalize(() => {
-          this.downloadURL = fileRef.getDownloadURL();
-          this.downloadURL.subscribe((url: any) => {
-            if (url) {
-              this.fb = url;
-              this.showPreview = true;
-            }
-          });
-        })
-      )
+      finalize(() => this.getUrl(fileRef)))
       .subscribe((url) => {
         if (url) {
           this.emptyTask(task);
@@ -203,5 +196,13 @@ export class InputComponent implements OnInit {
 
   textToFunction() {
     this.textRed = true;
+  }
+
+  getUrl(fileRef) {
+    fileRef.getDownloadURL().subscribe(url => { this.fb = url; 
+    if (url) {
+      this.showPreview = true;
+    }
+    });
   }
 }
