@@ -7,10 +7,14 @@ h3 {
 .user {
   display: flex;
   position: relative;
-  padding: $spacing-S;
+  margin: $spacing-S 0;
+  padding: 0 $spacing-S;
 
   &:hover {
     background-color: #3f3f3f;
+    .icon-holder {
+      display: flex;
+    }
   }
   .message {
     width: 100%;
@@ -196,6 +200,27 @@ mat-drawer-content {
       margin-left: $spacing-S;
       font-size: 12px;
       color: $white-tr;
+    }
+  }
+}
+
+.icon-holder {
+  display: none;
+  position: absolute;
+  justify-content: center;
+  top: 0;
+  left: 0;
+  right: 0;
+  transform: translateY(-50%);
+  .icon-bar {
+    background-color: $black;
+    border-radius: $brd-radius;
+    display: flex;
+    align-items: center;
+
+    mat-icon {
+      margin: $spacing-XS;
+      cursor: pointer;
     }
   }
 }
