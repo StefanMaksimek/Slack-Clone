@@ -23,7 +23,11 @@ import { Thread } from 'src/assets/models/thread.class';
 export class ThreadComponent implements OnInit, OnChanges {
   @ViewChild('content') private content: ElementRef;
   @Input() curentThread: Message = new Message();
-  component: string = 'thread';
+  component: object = {
+    name: 'thread',
+    textPlaceholder: 'Antworten...',
+    channel: '',
+  };
 
   constructor() {}
 

@@ -58,7 +58,7 @@ export class InputComponent implements OnInit {
       this.sendMessageToMessages();
       this.showPreview = false;
     }
-    if (this.component == 'thread') {
+    if (this.component.name == 'thread') {
       this.sendMessageToThread();
       this.showPreview = false;
     }

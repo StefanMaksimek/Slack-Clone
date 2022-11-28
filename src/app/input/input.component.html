@@ -73,7 +73,7 @@
     <input
       [ngClass]="{ red: textRed }"
       #input
-      placeholder="Nachricht an #{{ fire.actChannel }}"
+      placeholder="{{ component.textPlaceholder }} {{ component.channel }}"
     />
     <div class="img-preview-container">
       <img class="img-preview" *ngIf="showPreview" [src]="fb" />

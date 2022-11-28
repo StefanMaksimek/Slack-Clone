@@ -24,7 +24,11 @@ export class OutputComponent implements OnInit {
   index = '';
   hoverReact = false;
 
-  component: string = 'output';
+  component: object = {
+    name: 'output',
+    textPlaceholder: 'Nachricht an # ',
+    channel: this.fire.actChannel,
+  };
   message: Message;
   curentThread: any = new Thread();
   currentThreadHeadder: string = 'Undifined';
