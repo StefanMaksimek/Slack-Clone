@@ -70,7 +70,18 @@
       >
     </div>
 
+    <emoji-mart
+      class="emoji-mart"
+      *ngIf="isEmojiPickerVisible"
+      (emojiSelect)="addEmoji($event)"
+      title="Choose your emoji"
+    ></emoji-mart>
+
     <input
+      type="text"
+      [(ngModel)]="inputField"
+      [ngModelOptions]="{ standalone: true }"
+      type="text"
       [ngClass]="{ red: textRed }"
       #input
       placeholder="{{ component.textPlaceholder }} {{ component.channel }}"
@@ -125,6 +136,7 @@
         >
         <div class="vr white"></div>
         <mat-icon
+          (click)="isEmojiPickerVisible = !isEmojiPickerVisible"
           matTooltip="Emojis"
           matTooltipPosition="above"
           matTooltipShowDelay="250"
