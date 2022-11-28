@@ -56,7 +56,7 @@ export class InputComponent implements OnInit {
   }
 
   sendMessage() {
-    if (this.component == 'output') {
+    if (this.component.name == 'output') {
       this.sendMessageToMessages();
       this.showPreview = false;
     }
@@ -98,6 +98,8 @@ export class InputComponent implements OnInit {
   }
 
   setMessage() {
+    console.log('sendMessage');
+
     this.message = new Message();
     this.message.userName = this.user.displayName;
     this.message.ID = this.message.createID(20);

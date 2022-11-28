@@ -1,17 +1,9 @@
-import {
-  AfterViewChecked,
-  AfterViewInit,
-  Component,
-  ElementRef,
-  OnChanges,
-  OnInit,
-  QueryList,
-  ViewChild,
-} from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Firestore } from '@angular/fire/firestore';
 import { Message } from 'src/assets/models/message.class';
 import { Thread } from 'src/assets/models/thread.class';
 import { FireService } from '../fire.service';
+import * as Emojis from '../../assets/emojis.json';
 
 @Component({
   selector: 'app-output',
@@ -21,6 +13,7 @@ import { FireService } from '../fire.service';
 export class OutputComponent implements OnInit {
   @ViewChild('content') private content: ElementRef;
 
+  emojis: any = Emojis;
   index = '';
   hoverReact = false;
 
