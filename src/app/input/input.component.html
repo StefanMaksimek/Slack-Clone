@@ -62,7 +62,8 @@
         matTooltipShowDelay="250"
         >code</mat-icon
       >
-      <mat-icon
+      <mat-icon 
+      (click)="textToCodeblock()"
         matTooltip="code block"
         matTooltipPosition="above"
         matTooltipShowDelay="250"
@@ -71,7 +72,7 @@
     </div>
 
     <input
-      [ngClass]="{ red: textRed }"
+      [ngClass]="{ functionFont: functionText, block: codeblock }"
       #input
       placeholder="{{ component.textPlaceholder }} {{ component.channel }}"
     />

@@ -26,7 +26,8 @@ export class InputComponent implements OnInit {
 
   formatting: boolean = true;
 
-  textRed = false;
+  functionText = false;
+  codeblock = false;
 
   @Input() component: any;
   @Input() curentThread: Thread = new Thread();
@@ -173,7 +174,10 @@ export class InputComponent implements OnInit {
   }
 
   textToFunction() {
-    this.textRed = true;
+    this.functionText = true;
+  }
+
+  textToCodeblock() {
   }
 
   getUrl(fileRef) {
