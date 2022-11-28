@@ -26,8 +26,6 @@
           class="user"
           *ngFor="let message of channel; let i = index"
           id="user-container{{ i }}"
-          (mouseover)="onMouseover(i)"
-          (mouseout)="onMouseout(i)"
         >
           <img class="profile-pic" src="assets/img/{{ message.profilePic }}" />
 
@@ -83,7 +81,12 @@
             </div>
           </div>
 
-          <div id="hover-container{{ i }}" class="hover-react">
+          <!-- 
+            => this to div class="user"  {
+              (mouseover)="onMouseover(i)"
+          (mouseout)="onMouseout(i)"
+            }
+            <div id="hover-container{{ i }}" class="hover-react">
             <div class="hover-effect">
               <img class="react-icons" src="assets/img/icons/laugh-emote.ico" />
               <span (click)="openDialog()">React</span>
@@ -96,8 +99,8 @@
               <img class="react-icons" src="assets/img/icons/chat.ico" />
               <span>Reply</span>
             </div>
-          </div>
-        </div>
+          </div> 
+        --></div>
       </div>
       <div id="dialog"></div>
 

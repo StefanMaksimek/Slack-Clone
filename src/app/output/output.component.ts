@@ -23,7 +23,7 @@ export class OutputComponent implements OnInit {
     channel: this.fire.actChannel,
   };
   message: Message;
-  curentThread: any = new Thread();
+  curentThread: Message = new Message();
   currentThreadHeadder: string = 'Undifined';
 
   channel: any = [];
@@ -41,17 +41,17 @@ export class OutputComponent implements OnInit {
     }
   }
 
-  onMouseover(i: any): void {
-    let id: any = 'hover-container' + i;
-    let box: any = document.getElementById(id);
-    box.style.display = 'flex';
-  }
-
-  onMouseout(i: any): void {
-    let id: any = 'hover-container' + i;
-    let box: any = document.getElementById(id);
-    box.style.display = 'none';
-  }
+  //onMouseover(i: any): void {
+  //  let id: any = 'hover-container' + i;
+  //  let box: any = document.getElementById(id);
+  //  box.style.display = 'flex';
+  //}
+  //
+  //onMouseout(i: any): void {
+  //  let id: any = 'hover-container' + i;
+  //  let box: any = document.getElementById(id);
+  //  box.style.display = 'none';
+  //}
 
   openDialog() {
     let id: any = 'dialog';
@@ -72,7 +72,6 @@ export class OutputComponent implements OnInit {
       .getDocData(this.fire.actChannel, messageID)
       .subscribe((doc: any) => {
         this.curentThread = doc;
-        console.log(this.curentThread);
         this.currentThreadHeadder = this.curentThread.channel;
       });
   }

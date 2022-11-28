@@ -207,9 +207,10 @@ mat-drawer-content {
 }
 
 .icon-holder {
-  display: flex;
+  display: none;
   position: absolute;
-  justify-content: center;
+  justify-content: end;
+  margin: 0 $spacing-S;
   top: 0;
   left: 0;
   right: 0;
@@ -233,6 +234,9 @@ mat-drawer-content {
       justify-content: center;
       margin: $spacing-XS;
       cursor: pointer;
+      &:hover {
+        background-color: $grey-tr;
+      }
     }
   }
 }
