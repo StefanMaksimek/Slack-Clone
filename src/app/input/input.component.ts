@@ -21,6 +21,15 @@ import * as Emojis from '../../assets/emojis.json';
 export class InputComponent implements OnInit {
   @ViewChild('input') input!: ElementRef;
 
+  // ################
+  public inputField: string = '';
+  public isEmojiPickerVisible: boolean;
+  public addEmoji(event: any) {
+    this.inputField = `${this.inputField}${event.emoji.native}`;
+    this.isEmojiPickerVisible = false;
+  }
+  // #################
+
   getAuth = getAuth();
   fireAuthUser = this.getAuth.currentUser;
 

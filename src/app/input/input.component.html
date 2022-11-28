@@ -71,8 +71,15 @@
       >
     </div>
 
+    <emoji-mart
+      class="emoji-mart"
+      *ngIf="isEmojiPickerVisible"
+      (emojiSelect)="addEmoji($event)"
+      title="Choose your emoji"
+    ></emoji-mart>
+
     <input
-      [ngClass]="{ functionFont: functionText, block: codeblock }"
+      [ngClass]="{ red: textRed }"
       #input
       placeholder="{{ component.textPlaceholder }} {{ component.channel }}"
     />
@@ -126,6 +133,7 @@
         >
         <div class="vr white"></div>
         <mat-icon
+          (click)="isEmojiPickerVisible = !isEmojiPickerVisible"
           matTooltip="Emojis"
           matTooltipPosition="above"
           matTooltipShowDelay="250"
@@ -169,7 +177,7 @@
 
       <div
         class="icon-holder grey"
-        [ngClass]="{ 'green-send-btn': !formatting }"
+        [ngClass]="{ 'green-send-btn': inputField.length > 0 }"
       >
         <mat-icon
           (click)="sendMessage()"
