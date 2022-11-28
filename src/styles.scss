@@ -2,19 +2,19 @@
 @import "./assets/variable.scss";
 /* width */
 ::-webkit-scrollbar {
-    background-color: #444444;
-    width: 12px;
+  background-color: #444444;
+  width: 12px;
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
-    border-radius: 5px;
+  border-radius: 5px;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-    background: rgb(231, 229, 229); 
-    border-radius: 24px;
+  background: rgb(231, 229, 229);
+  border-radius: 24px;
 }
 
 html,
@@ -32,13 +32,13 @@ body {
 .addTopicDialog {
   width: 350px;
   input {
-      width: 100%;
-      padding-top: 10px;
-      padding-bottom: 10px;
-      margin-bottom: 10px;
+    width: 100%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
   }
 
   .inputFields {
-      padding-bottom: 10px;
+    padding-bottom: 10px;
   }
 }
