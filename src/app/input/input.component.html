@@ -180,7 +180,7 @@
 
       <div
         class="icon-holder grey"
-        [ngClass]="{ 'green-send-btn': !formatting }"
+        [ngClass]="{ 'green-send-btn': inputField.length > 0 }"
       >
         <mat-icon
           (click)="sendMessage()"
