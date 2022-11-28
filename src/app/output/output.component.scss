@@ -9,7 +9,7 @@ h3 {
   position: relative;
   margin: $spacing-S 0;
   padding: 0 $spacing-S;
-
+  transition: $transition-ms;
   &:hover {
     background-color: #3f3f3f;
     .icon-holder {
@@ -51,6 +51,8 @@ h3 {
     border: 1px solid transparent;
     color: $secondary;
     cursor: pointer;
+    transition: $transition-ms;
+
     &:hover {
       background-color: $darkGray;
       border: 1px solid $white-tr;
@@ -205,7 +207,7 @@ mat-drawer-content {
 }
 
 .icon-holder {
-  display: none;
+  display: flex;
   position: absolute;
   justify-content: center;
   top: 0;
@@ -213,7 +215,8 @@ mat-drawer-content {
   right: 0;
   transform: translateY(-50%);
   .icon-bar {
-    background-color: $black;
+    background-color: $darkGray;
+    border: 1px solid $white-tr;
     border-radius: $brd-radius;
     display: flex;
     align-items: center;

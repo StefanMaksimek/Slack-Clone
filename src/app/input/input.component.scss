@@ -4,7 +4,7 @@
   border: 1px solid $white;
   border-radius: $brd-radius;
   padding: $spacing-XS;
-  background-color: $black;
+  background-color: $darkGray;
 
   &:focus-within {
     border: 1px solid $white;
@@ -143,4 +143,5 @@
 
 .green-send-btn {
   background-color: green;
+  border-radius: $brd-radius;
 }
