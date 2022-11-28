@@ -11,6 +11,7 @@ import { finalize, flatMap } from 'rxjs/operators';
 import { Thread } from 'src/assets/models/thread.class';
 import { FireService } from '../fire.service';
 import { ThreadMessage } from 'src/assets/models/threadMessage.class';
+import * as Emojis from '../../assets/emojis.json';
 
 @Component({
   selector: 'app-input',
@@ -49,6 +50,7 @@ export class InputComponent implements OnInit {
     public fire: FireService
   ) {}
 
+  emojis: any = Emojis;
   ngOnInit(): void {
     this.getUser();
   }

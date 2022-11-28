@@ -35,11 +35,10 @@ import { RouterModule } from '@angular/router';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { HttpClientModule } from '@angular/common/http';
 import { MatCardModule } from '@angular/material/card';
-import {MatDialogModule} from '@angular/material/dialog';
+import { MatDialogModule } from '@angular/material/dialog';
 import { AddChannelComponent } from './add-channel/add-channel.component';
 import { FIREBASE_OPTIONS } from '@angular/fire/compat';
 import { AddAppComponent } from './add-app/add-app.component';
-
 
 @NgModule({
   declarations: [
@@ -82,9 +81,9 @@ import { AddAppComponent } from './add-app/add-app.component';
     RouterModule,
     MatSnackBarModule,
     HttpClientModule,
-    MatDialogModule
+    MatDialogModule,
   ],
-  providers: [ { provide: FIREBASE_OPTIONS, useValue: environment.firebase }],
+  providers: [{ provide: FIREBASE_OPTIONS, useValue: environment.firebase }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
