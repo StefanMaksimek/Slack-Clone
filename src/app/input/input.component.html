@@ -1,7 +1,9 @@
 <div class="holder">
+  <div id="dialog"></div>
   <form class="form">
     <div class="icon-holder" *ngIf="formatting">
       <p
+        (click)="openDialog()"
         matTooltip="bold type"
         matTooltipPosition="above"
         matTooltipShowDelay="250"
@@ -9,6 +11,7 @@
         B
       </p>
       <p
+        (click)="openDialog()"
         matTooltip="italic type"
         matTooltipPosition="above"
         matTooltipShowDelay="250"
@@ -16,6 +19,7 @@
         <i>I</i>
       </p>
       <p
+        (click)="openDialog()"
         matTooltip="crossed out "
         matTooltipPosition="above"
         matTooltipShowDelay="250"
@@ -24,6 +28,7 @@
       </p>
       <div class="vr"></div>
       <mat-icon
+        (click)="openDialog()"
         matTooltip="link"
         matTooltipPosition="above"
         matTooltipShowDelay="250"
@@ -36,12 +41,14 @@
         class="vr"
       ></div>
       <mat-icon
+        (click)="openDialog()"
         matTooltip="numbered list"
         matTooltipPosition="above"
         matTooltipShowDelay="250"
         >format_list_numbered</mat-icon
       >
       <mat-icon
+        (click)="openDialog()"
         matTooltip="bullet list"
         matTooltipPosition="above"
         matTooltipShowDelay="250"
@@ -49,6 +56,7 @@
       >
       <div class="vr"></div>
       <mat-icon
+        (click)="openDialog()"
         matTooltip="block quote"
         matTooltipPosition="above"
         matTooltipShowDelay="250"
@@ -62,8 +70,8 @@
         matTooltipShowDelay="250"
         >code</mat-icon
       >
-      <mat-icon 
-      (click)="textToCodeblock()"
+      <mat-icon
+        (click)="textToCodeblock()"
         matTooltip="code block"
         matTooltipPosition="above"
         matTooltipShowDelay="250"
@@ -79,6 +87,8 @@
     ></emoji-mart>
 
     <input
+      [(ngModel)]="inputField"
+      [ngModelOptions]="{ standalone: true }"
       [class.functionFont]="functionText"
       #input
       placeholder="{{ component.textPlaceholder }} {{ component.channel }}"
@@ -118,6 +128,7 @@
 
         <div class="vr white"></div>
         <mat-icon
+          (click)="openDialog()"
           matTooltip="record video"
           matTooltipPosition="above"
           matTooltipShowDelay="250"
@@ -125,6 +136,7 @@
           >video_camera_front</mat-icon
         >
         <mat-icon
+          (click)="openDialog()"
           matTooltip="record sound"
           matTooltipPosition="above"
           matTooltipShowDelay="250"
@@ -141,6 +153,7 @@
           >tag_faces</mat-icon
         >
         <p
+          (click)="openDialog()"
           matTooltip="Link person"
           matTooltipPosition="above"
           matTooltipShowDelay="250"
@@ -179,15 +192,19 @@
         class="icon-holder grey"
         [ngClass]="{ 'green-send-btn': inputField.length > 0 }"
       >
-        <mat-icon
+        <button
+          [disabled]="inputField.length == 0"
+          mat-icon-button
           (click)="sendMessage()"
           matTooltip="send message "
           matTooltipPosition="above"
           matTooltipShowDelay="250"
-          >send</mat-icon
         >
+          <mat-icon>send</mat-icon>
+        </button>
         <div class="vr"></div>
         <mat-icon
+          (click)="openDialog()"
           matTooltip=" "
           matTooltipPosition="above"
           matTooltipShowDelay="250"

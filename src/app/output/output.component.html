@@ -69,39 +69,23 @@
 
           <div class="icon-holder">
             <div class="icon-bar">
-              <div class="emo">{{ emojis.white_check_mark }}</div>
-              <div class="emo">{{ emojis.eyes }}</div>
-              <div class="emo">{{ emojis.open_hands }}</div>
-              <mat-icon>add_reaction</mat-icon>
+              <div class="emo" (click)="openDialog()">
+                {{ emojis.white_check_mark }}
+              </div>
+              <div class="emo" (click)="openDialog()">{{ emojis.eyes }}</div>
+              <div class="emo" (click)="openDialog()">
+                {{ emojis.open_hands }}
+              </div>
+              <mat-icon (click)="openDialog()">add_reaction</mat-icon>
               <mat-icon (click)="openThread(message.ID); thread.open()"
                 >comment</mat-icon
               >
-              <mat-icon>reply</mat-icon>
-              <mat-icon>add</mat-icon>
-              <mat-icon>more_vert</mat-icon>
+              <mat-icon (click)="openDialog()">reply</mat-icon>
+              <mat-icon (click)="openDialog()">add</mat-icon>
+              <mat-icon (click)="openDialog()">more_vert</mat-icon>
             </div>
           </div>
-
-          <!-- 
-            => this to div class="user"  {
-              (mouseover)="onMouseover(i)"
-          (mouseout)="onMouseout(i)"
-            }
-            <div id="hover-container{{ i }}" class="hover-react">
-            <div class="hover-effect">
-              <img class="react-icons" src="assets/img/icons/laugh-emote.ico" />
-              <span (click)="openDialog()">React</span>
-            </div>
-
-            <div
-              class="hover-effect"
-              (click)="openThread(message.ID); thread.open()"
-            >
-              <img class="react-icons" src="assets/img/icons/chat.ico" />
-              <span>Reply</span>
-            </div>
-          </div> 
-        --></div>
+        </div>
       </div>
       <div id="dialog"></div>
 

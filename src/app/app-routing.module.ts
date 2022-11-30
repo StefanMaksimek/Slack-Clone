@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { SignInComponent } from './auth/sign-in/sign-in.component';
 import { SignUpComponent } from './auth/sign-up/sign-up.component';
-import { ChannelComponent } from './channel/channel.component';
 import {
   redirectLoggedInTo,
   canActivate,
@@ -12,8 +11,6 @@ import {
 import { OutputComponent } from './output/output.component';
 
 const routes: Routes = [
-  { path: 'channel', component: ChannelComponent },
-
   //for sign-in
   { path: '', redirectTo: 'output', pathMatch: 'full' },
   {

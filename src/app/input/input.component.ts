@@ -20,15 +20,12 @@ import * as Emojis from '../../assets/emojis.json';
 })
 export class InputComponent implements OnInit {
   @ViewChild('input') input!: ElementRef;
-
-  // ################
   public inputField: string = '';
   public isEmojiPickerVisible: boolean;
   public addEmoji(event: any) {
     this.inputField = `${this.inputField}${event.emoji.native}`;
     this.isEmojiPickerVisible = false;
   }
-  // #################
 
   getAuth = getAuth();
   fireAuthUser = this.getAuth.currentUser;
@@ -186,8 +183,7 @@ export class InputComponent implements OnInit {
     this.functionText = !this.functionText;
   }
 
-  textToCodeblock() {
-  }
+  textToCodeblock() {}
 
   getUrl(fileRef) {
     fileRef.getDownloadURL().subscribe((url) => {
@@ -196,5 +192,16 @@ export class InputComponent implements OnInit {
         this.showPreview = true;
       }
     });
+  }
+
+  openDialog() {
+    let id: any = 'dialog';
+    let dialogContainer: any = document.getElementById(id);
+    dialogContainer.style.display = 'flex';
+    dialogContainer.innerHTML = 'Diese Function wurde noch nicht Implementiert';
+
+    setTimeout(() => {
+      dialogContainer.style.display = 'none';
+    }, 1800);
   }
 }

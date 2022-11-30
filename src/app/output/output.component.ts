@@ -29,7 +29,11 @@ export class OutputComponent implements OnInit {
 
   channel: any = [];
 
-  constructor(private firestore: Firestore, public fire: FireService, private inputComponent: InputComponent) {}
+  constructor(
+    private firestore: Firestore,
+    public fire: FireService,
+    private inputComponent: InputComponent
+  ) {}
 
   functionText = this.inputComponent.functionText;
 
@@ -43,18 +47,6 @@ export class OutputComponent implements OnInit {
       console.log('output', err);
     }
   }
-
-  //onMouseover(i: any): void {
-  //  let id: any = 'hover-container' + i;
-  //  let box: any = document.getElementById(id);
-  //  box.style.display = 'flex';
-  //}
-  //
-  //onMouseout(i: any): void {
-  //  let id: any = 'hover-container' + i;
-  //  let box: any = document.getElementById(id);
-  //  box.style.display = 'none';
-  //}
 
   openDialog() {
     let id: any = 'dialog';

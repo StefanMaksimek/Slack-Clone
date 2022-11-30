@@ -22,7 +22,6 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { ThreadComponent } from './thread/thread.component';
-import { ChannelComponent } from './channel/channel.component';
 import { MatButtonModule } from '@angular/material/button';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { provideAuth, getAuth } from '@angular/fire/auth';
@@ -54,7 +53,6 @@ import { PickerModule } from '@ctrl/ngx-emoji-mart';
     InputComponent,
     OutputComponent,
     ThreadComponent,
-    ChannelComponent,
     AddChannelComponent,
     AddAppComponent,
   ],
@@ -85,7 +83,10 @@ import { PickerModule } from '@ctrl/ngx-emoji-mart';
     MatDialogModule,
     PickerModule,
   ],
-  providers: [{ provide: FIREBASE_OPTIONS, useValue: environment.firebase}, InputComponent],
+  providers: [
+    { provide: FIREBASE_OPTIONS, useValue: environment.firebase },
+    InputComponent,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

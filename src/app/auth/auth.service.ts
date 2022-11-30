@@ -41,8 +41,7 @@ export class AuthService {
       switchMap(({ user }) =>
         forkJoin([
           updateProfile(user, { displayName }),
-          //console.log(user),
-
+          //ToDo
           setDoc(doc(this.userRef), { user: 'user' }),
         ])
       )

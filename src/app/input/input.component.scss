@@ -28,6 +28,17 @@
       display: flex;
       align-items: center;
 
+      button {
+        &:disabled {
+          mat-icon {
+            color: $grey-tr;
+            &:hover {
+              background-color: transparent;
+              cursor: not-allowed;
+            }
+          }
+        }
+      }
       .add {
         background-color: $grey-tr;
       }
@@ -117,8 +128,8 @@
       border: white;
       background-color: gray;
       border-radius: 8px;
-      font-size: 14px
-  }
+      font-size: 14px;
+    }
   }
 }
 
