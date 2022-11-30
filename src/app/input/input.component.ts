@@ -183,7 +183,7 @@ export class InputComponent implements OnInit {
   }
 
   textToFunction() {
-    this.functionText = true;
+    this.functionText = !this.functionText;
   }
 
   textToCodeblock() {

@@ -93,12 +93,12 @@
 
     input {
       border: none;
-      color: $white;
       margin: $spacing-XS 0;
       background-color: transparent;
       width: 100%;
       padding: $spacing-XS;
       font-size: $fontsize-p;
+      color: white;
 
       &:focus {
         outline: none;
@@ -110,6 +110,15 @@
       display: flex;
       justify-content: space-between;
     }
+
+    .functionFont {
+      color: orangered;
+      width: 100%;
+      border: white;
+      background-color: gray;
+      border-radius: 8px;
+      font-size: 14px
+  }
   }
 }
 
@@ -136,12 +145,6 @@
     &:hover {
       cursor: pointer;
     }
-  }
-}
-
-.functionFont {
-  input {
-    color: red;
   }
 }
 
