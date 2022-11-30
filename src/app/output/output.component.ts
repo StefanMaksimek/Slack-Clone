@@ -4,6 +4,7 @@ import { Message } from 'src/assets/models/message.class';
 import { Thread } from 'src/assets/models/thread.class';
 import { FireService } from '../fire.service';
 import * as Emojis from '../../assets/emojis.json';
+import { InputComponent } from '../input/input.component';
 
 @Component({
   selector: 'app-output',
@@ -28,7 +29,9 @@ export class OutputComponent implements OnInit {
 
   channel: any = [];
 
-  constructor(private firestore: Firestore, public fire: FireService) {}
+  constructor(private firestore: Firestore, public fire: FireService, private inputComponent: InputComponent) {}
+
+  functionText = this.inputComponent.functionText;
 
   ngOnInit(): void {}
 

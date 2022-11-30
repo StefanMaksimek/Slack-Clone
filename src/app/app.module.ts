@@ -85,7 +85,7 @@ import { PickerModule } from '@ctrl/ngx-emoji-mart';
     MatDialogModule,
     PickerModule,
   ],
-  providers: [{ provide: FIREBASE_OPTIONS, useValue: environment.firebase }],
+  providers: [{ provide: FIREBASE_OPTIONS, useValue: environment.firebase}, InputComponent],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
