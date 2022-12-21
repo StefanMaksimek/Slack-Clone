@@ -1,20 +1,12 @@
-import {
-  Component,
-  EventEmitter,
-  OnChanges,
-  OnInit,
-  Output,
-  SimpleChanges,
-} from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { App } from 'src/assets/models/app.class';
 import { Channel } from 'src/assets/models/channel.class';
 import { Message } from 'src/assets/models/message.class';
 import { AddAppComponent } from '../add-app/add-app.component';
 import { AddChannelComponent } from '../add-channel/add-channel.component';
 import { FireService } from '../fire.service';
-import { OutputComponent } from '../output/output.component';
 
 @Component({
   selector: 'app-side-toppings',
